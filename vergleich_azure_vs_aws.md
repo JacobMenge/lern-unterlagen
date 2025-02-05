@@ -92,13 +92,15 @@ Azure Security Center bietet Bedrohungserkennung und Compliance-Überwachung, w�
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
-| **Azure Monitor** | Überwachung von Infrastruktur & Logs. | **Amazon CloudWatch** |
+| **Azure Monitor** | Überwachung von Infrastruktur & Logs zur Leistungsanalyse. | **Amazon CloudWatch** |
 | **Azure Service Health** | Echtzeit-Statusinformationen zu Azure-Diensten mit Warnmeldungen bei Ausfällen oder Wartungen. | **AWS Health Dashboard** |
 | **Azure Resource Health** | Gibt den spezifischen Status einzelner Ressourcen an, um Probleme zu identifizieren. | **AWS Personal Health Dashboard** |
-| **Azure Security Center** | Zentrale Sicherheitsverwaltung. | **AWS Security Hub** |
-| **Azure Policy** | Governance- & Compliance-Kontrolle. | **AWS Organizations, AWS Config** |
-| **Azure Cost Management + Billing** | Verwaltung von Cloud-Kosten. | **AWS Cost Explorer, AWS Budgets** |
-| **Azure Sentinel** | Cloud-nativer SIEM-Dienst für Sicherheitsanalysen. | **Amazon GuardDuty** |
+| **Microsoft Defender for Cloud** | Grundlegende Sicherheitsverwaltung und Empfehlungen zur Verbesserung der Sicherheit. | **AWS Security Hub** |
+| **Azure Policy** | Governance- & Compliance-Kontrolle zur Durchsetzung von Unternehmensrichtlinien. | **AWS Organizations, AWS Config** |
+| **Azure Cost Management + Billing** | Verwaltung und Optimierung von Cloud-Kosten. | **AWS Cost Explorer, AWS Budgets** |
+| **Azure Sentinel** *(am Rande erwähnt)* | Cloud-nativer SIEM-Dienst für Sicherheitsanalysen und Bedrohungserkennung. | **Amazon GuardDuty** |
+| **Azure Key Vault** *(am Rande erwähnt)* | Sicherer Speicher für Zertifikate, Passwörter & Verschlüsselungsschlüssel. | **AWS KMS, AWS Secrets Manager** |
+| **Azure Advisor** *(am Rande erwähnt)* | Empfehlungen zur Verbesserung von Leistung, Sicherheit, Verfügbarkeit und Kosten. | **AWS Trusted Advisor** |
 
 ---
 
