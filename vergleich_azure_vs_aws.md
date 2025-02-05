@@ -6,57 +6,54 @@ Microsoft Azure und Amazon Web Services (AWS) sind die beiden führenden Cloud-P
 
 Die **AZ-900-Zertifizierung** prüft grundlegende Kenntnisse zu **Azure-Diensten und Cloud-Konzepten**. Ein Verständnis der **Unterschiede zwischen Azure und AWS** hilft, die jeweiligen Stärken und Schwächen der Plattformen besser einzuordnen.  
 
----
+# Vergleich Azure vs. AWS für AZ-900
 
-## 2. Cloud-Konzepte  
+## 1. Cloud-Konzepte
 
-Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skalierung.  
+Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skalierung.
 
 | **Azure Begriff / Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |----------------------------|------------------|--------------------|
-| **Öffentliche, private und hybride Cloud** | Bereitstellungsmodelle: Öffentliche Cloud (für alle zugänglich), private Cloud (internes Rechenzentrum), hybride Cloud (Mischform). | AWS ist primär eine **Public Cloud**, Hybrid-Cloud-Lösungen über **AWS Outposts**. |
+| **Öffentliche, private und hybride Cloud** | Verschiedene Bereitstellungsmodelle: öffentliche Cloud (für alle zugänglich), private Cloud (internes Rechenzentrum), hybride Cloud (Kombination aus beiden). | AWS ist primär eine **Public Cloud**, Hybrid-Cloud-Lösungen über **AWS Outposts**. |
 | **IaaS, PaaS, SaaS** | Service-Modelle: Infrastruktur (IaaS), Plattform (PaaS) und Software (SaaS). | AWS bietet dieselben Modelle an. |
 | **Skalierbarkeit & Elastizität** | Fähigkeit, Ressourcen dynamisch an Lasten anzupassen. | **AWS Auto Scaling** |
-| **Hochverfügbarkeit & Fehlertoleranz** | Sicherstellung der kontinuierlichen Verfügbarkeit durch Redundanz. | **AWS Multi-AZ Deployments, Auto Scaling** |
+| **Hochverfügbarkeit & Fehlertoleranz** | Sicherstellung der kontinuierlichen Verfügbarkeit durch Redundanz. | **AWS Multi-AZ Deployments, AWS Auto Scaling** |
 | **Disaster Recovery & Geschäftskontinuität** | Strategien zur Wiederherstellung nach Ausfällen. | **AWS Elastic Disaster Recovery, AWS Backup** |
-
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure ist in Hybrid-Cloud-Szenarien überlegen** durch **Azure Arc** & **Azure Stack**.  
-✔ **AWS ist Marktführer in Public Cloud** mit der größten globalen Infrastruktur.  
+| **Verbrauchsbasierte Abrechnung (Pay-as-you-go)** | Abrechnung nur für tatsächlich genutzte Ressourcen. | **AWS Pay-as-you-go** |
+| **Serverless Computing** | Ausführung von Code ohne Verwaltung der zugrunde liegenden Serverinfrastruktur. | **AWS Lambda** |
 
 ---
 
-## 3. Compute-Dienste (Rechenleistung)  
+## 2. Azure-Architektur und -Dienste
+
+Kernkomponenten der Cloud-Infrastruktur.
+
+### Compute-Dienste (Rechenleistung)
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
 | **Azure Virtual Machines (VMs)** | Cloud-VMs für Windows & Linux. | **Amazon EC2** |
 | **Azure App Service** | Verwalteter Hosting-Dienst für Web-Apps. | **AWS Elastic Beanstalk** |
 | **Azure Functions** | Serverlose Code-Ausführung. | **AWS Lambda** |
-
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure hat eine tiefere Windows-Integration** – ideal für Unternehmen mit **Windows Server, Active Directory & .NET-Anwendungen**.  
-✔ **AWS hat eine breitere Auswahl an Instanztypen & Optimierungen** für High-Performance-Anwendungen.  
+| **Azure Kubernetes Service (AKS)** | Verwalteter Kubernetes-Dienst für Container. | **Amazon EKS** |
+| **Azure Container Instances (ACI)** | Container-Ausführung ohne Orchestrierungsdienst. | **AWS Fargate** |
+| **Azure Virtual Desktop** | Virtuelle Desktop-Infrastruktur. | **Amazon WorkSpaces** |
 
 ---
 
-## 4. Netzwerk- & Sicherheitsdienste  
+### Netzwerk- & Sicherheitsdienste  
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
-| **Azure Virtual Network (VNet)** | Privates virtuelles Netzwerk. | **Amazon VPC** |
-| **Azure Load Balancer** | Lastverteilung von Netzwerkverkehr. | **Elastic Load Balancer (ELB)** |
+| **Azure Virtual Network (VNet)** | Private Netzwerke in Azure. | **Amazon VPC** |
+| **Azure Load Balancer** | Verteilung von Datenverkehr auf mehrere Ressourcen. | **Elastic Load Balancer (ELB)** |
 | **Azure VPN Gateway** | Sichere Verbindung zwischen On-Premises & Azure. | **AWS VPN Gateway** |
-| **Azure ExpressRoute** | Dedizierte Hochgeschwindigkeitsverbindung zu Azure. | **AWS Direct Connect** |
+| **Azure ExpressRoute** | Dedizierte Hochgeschwindigkeitsverbindung. | **AWS Direct Connect** |
 | **Azure Firewall** | Cloud-native Firewall für Azure-Umgebungen. | **AWS Network Firewall** |
-
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure ExpressRoute bietet stabilere On-Premises-Konnektivität** als **AWS Direct Connect**.  
-✔ **AWS bietet flexiblere Routing-Optionen** innerhalb von VPCs.  
 
 ---
 
-## 5. Speicher- & Datenbankdienste  
+## 3. Speicher- & Datenbankdienste  
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
@@ -65,13 +62,9 @@ Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skal
 | **Azure Cosmos DB** | Globale, verteilte NoSQL-Datenbank. | **Amazon DynamoDB** |
 | **Azure SQL Database** | Verwalteter relationaler Datenbankdienst. | **Amazon RDS für SQL Server** |
 
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure Cosmos DB bietet Multi-API-Unterstützung**, AWS DynamoDB ist primär **Key-Value-basiert**.  
-✔ **AWS S3 ist Marktführer im Objektspeicher**, Azure Blob Storage bietet aber **intensivere Azure-Integration**.  
-
 ---
 
-## 6. Identitäts- & Zugriffsmanagement  
+## 4. Identitäts- & Zugriffsmanagement  
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
@@ -79,13 +72,9 @@ Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skal
 | **Azure Role-Based Access Control (RBAC)** | Zugriffskontrolle basierend auf Rollen. | **AWS IAM Policies & Roles** |
 | **Azure Multi-Factor Authentication (MFA)** | Erhöhte Sicherheit durch 2FA. | **AWS MFA** |
 
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure AD bietet eine tiefere Integration in Unternehmensnetzwerke**.  
-✔ **AWS IAM ist flexibler für API-gesteuerte Berechtigungsverwaltung**.  
-
 ---
 
-## 7. Überwachung & Governance  
+## 5. Überwachung, Governance & Sicherheit  
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
@@ -93,7 +82,15 @@ Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skal
 | **Azure Security Center** | Zentrale Sicherheitsverwaltung. | **AWS Security Hub** |
 | **Azure Policy** | Governance- & Compliance-Kontrolle. | **AWS Organizations, AWS Config** |
 | **Azure Cost Management + Billing** | Verwaltung von Cloud-Kosten. | **AWS Cost Explorer, AWS Budgets** |
+| **Azure Sentinel** | Cloud-nativer SIEM-Dienst für Sicherheitsanalysen. | **Amazon GuardDuty** |
 
-### 🏆 **Unterschiede & Vorteile**  
-✔ **Azure Security Center bietet umfassendere Sicherheitsbewertungen** als AWS Security Hub.  
-✔ **AWS Cost Explorer ist intuitiver für Multi-Konten-Analysen**.  
+---
+
+## 6. Hybrid- und Multi-Cloud-Lösungen  
+
+| **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
+|------------------|------------------|--------------------|
+| **Azure Arc** | Verwaltung von On-Premises- und Multi-Cloud-Ressourcen. | **AWS Systems Manager** |
+| **Azure Stack** | Erweiterung von Azure-Diensten auf lokale Rechenzentren. | **AWS Outposts** |
+
+
