@@ -8,7 +8,9 @@ Microsoft Azure und Amazon Web Services (AWS) sind die beiden führenden Cloud-P
 
 ## 1. Cloud-Konzepte
 
-Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skalierung.
+### Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skalierung.
+
+Azure und AWS bieten ähnliche Cloud-Bereitstellungsmodelle (Public, Private, Hybrid) sowie Service-Modelle wie IaaS, PaaS und SaaS. Die Fähigkeit zur automatischen Skalierung und Fehlertoleranz ist entscheidend für die Verfügbarkeit von Anwendungen.
 
 | **Azure Begriff / Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |----------------------------|------------------|--------------------|
@@ -27,6 +29,8 @@ Grundlegendes Verständnis von Cloud-Computing, Bereitstellungsmodellen und Skal
 Kernkomponenten der Cloud-Infrastruktur.
 
 ### Compute-Dienste (Rechenleistung)
+Compute-Dienste ermöglichen die Bereitstellung und Verwaltung von virtuellen Maschinen, Serverless-Computing und Containern. Virtuelle Maschinen (VMs) sind die Basis vieler Cloud-Anwendungen, während Serverless-Computing (z. B. Azure Functions, AWS Lambda) Entwicklern ermöglicht, Code auszuführen, ohne sich um die Infrastruktur zu kümmern.
+Container-Orchestrierung ist ein weiterer wichtiger Bestandteil, da Anwendungen in isolierten Containern betrieben werden können, die über Kubernetes verwaltet werden.
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
@@ -41,6 +45,9 @@ Kernkomponenten der Cloud-Infrastruktur.
 
 ### Netzwerk- & Sicherheitsdienste  
 
+Cloud-Netzwerke müssen sicher, skalierbar und performant sein. Virtuelle Netzwerke ermöglichen die Trennung und Verwaltung von Ressourcen, während Load Balancer den Traffic effizient auf mehrere Instanzen verteilen.
+Sicherheitslösungen wie VPN-Gateways und Firewalls schützen Cloud-Ressourcen vor Bedrohungen. In Hybrid-Szenarien spielen dedizierte Verbindungen wie Azure ExpressRoute oder AWS Direct Connect eine zentrale Rolle, um sichere, schnelle Verbindungen zwischen On-Premises und der Cloud herzustellen.
+
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
 | **Azure Virtual Network (VNet)** | Private Netzwerke in Azure. | **Amazon VPC** |
@@ -53,6 +60,9 @@ Kernkomponenten der Cloud-Infrastruktur.
 
 ## 3. Speicher- & Datenbankdienste  
 
+Daten sind das Herzstück moderner Anwendungen. Cloud-Anbieter bieten unterschiedliche Speicherlösungen: Blob Storage für unstrukturierte Daten, Dateispeicher für gemeinsam genutzte Dateien und Datenbanken für relationale und NoSQL-Daten.
+Azure Cosmos DB und Amazon DynamoDB sind skalierbare NoSQL-Datenbanken mit globaler Verfügbarkeit, während verwaltete SQL-Datenbanken in Azure und AWS eine hohe Verfügbarkeit für traditionelle Anwendungen bieten.
+
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
 | **Azure Blob Storage** | Skalierbarer Objektspeicher. | **Amazon S3** |
@@ -64,6 +74,9 @@ Kernkomponenten der Cloud-Infrastruktur.
 
 ## 4. Identitäts- & Zugriffsmanagement  
 
+Sichere Cloud-Umgebungen benötigen effektives Identitäts- und Zugriffsmanagement (IAM). Azure AD und AWS IAM verwalten Benutzeridentitäten, Rollen und Berechtigungen. Multi-Faktor-Authentifizierung (MFA) erhöht die Sicherheit durch zusätzliche Verifizierungsschritte.
+Azure bietet mit RBAC (Role-Based Access Control) eine detaillierte Zugriffskontrolle für Ressourcen, während AWS über IAM Policies & Roles ein flexibles Berechtigungssystem bereitstellt.
+
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
 | **Azure Active Directory (Azure AD)** | Verwaltung von Benutzeridentitäten & Zugriffskontrolle. | **AWS IAM** |
@@ -73,6 +86,9 @@ Kernkomponenten der Cloud-Infrastruktur.
 ---
 
 ## 5. Überwachung, Governance & Sicherheit  
+
+Die Überwachung und Verwaltung von Cloud-Ressourcen ist entscheidend, um Leistung, Sicherheit und Compliance zu gewährleisten. Azure Monitor und AWS CloudWatch ermöglichen die Erfassung und Analyse von Logs und Metriken.
+Azure Security Center bietet Bedrohungserkennung und Compliance-Überwachung, während AWS Security Hub ähnliche Funktionen bereitstellt. Governance-Tools wie Azure Policy und AWS Organizations helfen Unternehmen, Richtlinien und Sicherheitsstandards durchzusetzen.
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
@@ -85,6 +101,9 @@ Kernkomponenten der Cloud-Infrastruktur.
 ---
 
 ## 6. Hybrid- und Multi-Cloud-Lösungen  
+
+Viele Unternehmen kombinieren Cloud- und On-Premises-Infrastrukturen. Azure Arc ermöglicht die Verwaltung von Multi-Cloud- und On-Premises-Ressourcen in Azure, während AWS Systems Manager eine ähnliche Funktionalität bietet.
+Azure Stack und AWS Outposts bringen Cloud-Dienste direkt in das lokale Rechenzentrum, um eine einheitliche Hybrid-Cloud-Erfahrung zu ermöglichen.
 
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
