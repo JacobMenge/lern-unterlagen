@@ -4,8 +4,6 @@
 
 Microsoft Azure und Amazon Web Services (AWS) sind die beiden führenden Cloud-Plattformen weltweit. Während AWS als Pionier des Cloud-Computings gilt, hat sich Azure als starker Konkurrent etabliert, insbesondere durch seine enge Integration mit Microsoft-Produkten.  
 
-Die **AZ-900-Zertifizierung** prüft grundlegende Kenntnisse zu **Azure-Diensten und Cloud-Konzepten**. Ein Verständnis der **Unterschiede zwischen Azure und AWS** hilft, die jeweiligen Stärken und Schwächen der Plattformen besser einzuordnen.  
-
 # Vergleich Azure vs. AWS für AZ-900
 
 ## 1. Cloud-Konzepte
