@@ -93,6 +93,8 @@ Azure Security Center bietet Bedrohungserkennung und Compliance-Überwachung, w�
 | **Azure Dienst** | **Beschreibung** | **AWS-Äquivalent** |
 |------------------|------------------|--------------------|
 | **Azure Monitor** | Überwachung von Infrastruktur & Logs. | **Amazon CloudWatch** |
+| **Azure Service Health** | Echtzeit-Statusinformationen zu Azure-Diensten mit Warnmeldungen bei Ausfällen oder Wartungen. | **AWS Health Dashboard** |
+| **Azure Resource Health** | Gibt den spezifischen Status einzelner Ressourcen an, um Probleme zu identifizieren. | **AWS Personal Health Dashboard** |
 | **Azure Security Center** | Zentrale Sicherheitsverwaltung. | **AWS Security Hub** |
 | **Azure Policy** | Governance- & Compliance-Kontrolle. | **AWS Organizations, AWS Config** |
 | **Azure Cost Management + Billing** | Verwaltung von Cloud-Kosten. | **AWS Cost Explorer, AWS Budgets** |
