@@ -10,7 +10,7 @@ Erstelle eine eigene RESTful API mit Node.js und Express, die grundlegende CRUD-
 
 ---
 
-### **Deployment der API in Azure mit der Techstarter Sandbox**
+#### **Deployment der API in Azure mit der Techstarter Sandbox**
 (kommt später erst)
 ➡ **Ergebnis:** Deine API soll öffentlich über die Techstarter Azure Sandbox gehostet sein und in Postman getestet werden können.
 ---
