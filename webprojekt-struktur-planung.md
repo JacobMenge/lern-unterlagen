@@ -52,16 +52,6 @@ Ein typisches Webprojekt durchläuft mehrere Phasen:
 ![image](https://github.com/user-attachments/assets/176d4684-7006-4df6-af95-4972741d8bea)
 Quelle: https://webdesigneinfuehrung.wordpress.com/380-2/phasen-eines-webprojekts/ 
 
-## Welche Technologien kommen zum Einsatz?
-
-Die Wahl der Technologie hängt von den Projektanforderungen ab. Eine typische Tech-Stack-Kombination könnte sein:
-
-- **Frontend:** HTML, CSS, JavaScript (z. B. React, Vue.js, Angular)
-- **Backend:** Node.js, Python, Ruby, PHP, Java
-- **Datenbanken:** MySQL, PostgreSQL, MongoDB, Firebase
-- **Hosting:** AWS, Azure, Vercel, Netlify, DigitalOcean
-- **CI/CD & Deployment:** Docker, Kubernetes, GitHub Actions, Jenkins
-
 ## Wichtig
 
 Eine gute Planung spart Zeit, Geld und sorgt für ein stabiles Webprojekt. In den folgenden Kapiteln gehen wir detailliert auf die einzelnen Phasen ein, von der Anforderungsanalyse über die Technologiewahl bis hin zur Umsetzung und Wartung.
@@ -140,7 +130,7 @@ Basierend auf den Anforderungen wird die Technologie ausgewählt. Faktoren dabei
 | Frontend      | React, Vue.js, Angular | React wegen großer Community |
 | Backend       | Node.js mit Express   | Skalierbarkeit & schnelles Prototyping |
 | Datenbank     | PostgreSQL, MongoDB   | MongoDB für flexible Datenstrukturen |
-| Hosting       | AWS, Vercel           | AWS für große Skalierung, Vercel für schnelle Deployments |
+| Hosting       | AWS, Azure           | AWS oder Azrue für große Skalierung |
 
 ## 5. Best Practices für die Planung
 
