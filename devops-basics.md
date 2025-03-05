@@ -145,6 +145,11 @@ Wichtige DevOps-Metriken:
 
 Beispiel: Nach einem Produktionsausfall organisiert das Team ein "blameless postmortem", bei dem die Ursachen analysiert und Lösungen erarbeitet werden, ohne Einzelpersonen zu beschuldigen.
 
+
+![image](https://github.com/user-attachments/assets/ad70bcb4-3ff2-4aeb-9db4-2bd3e54974d7)
+
+Quelle: https://nikhil-surendran.medium.com/calms-framework-a-successful-devops-model-d471af67149b
+
 ---
 
 ## Kultureller Wandel durch DevOps
