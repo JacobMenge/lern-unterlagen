@@ -10,7 +10,7 @@ In dieser Einzelaufgabe erforschst du die Erfolgsgeschichten von Unternehmen, di
 
 1. **Wähle 1-2 Unternehmen** aus der unten stehenden Liste oder suche dir eigenständig Unternehmen, die für ihre DevOps-Transformation bekannt sind.
 2. **Recherchiere** den DevOps-Transformationsweg dieser Unternehmen.
-3. **Dokumentiere** deine Erkenntnisse in einer strukturierten Präsentation (5-7 Folien oder 2-3 Seiten Text).
+3. **Dokumentiere** deine Erkenntnisse in einer strukturierten Präsentation (z.b. ein Textdokument oder Folien).
 
 ### In deiner Recherche solltest du folgende Fragen beantworten:
 
