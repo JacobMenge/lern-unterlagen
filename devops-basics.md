@@ -291,14 +291,15 @@ Typische Stages in einer Pipeline:
 
 Der **Build**-Prozess wandelt Quellcode in ausführbare Artefakte um:
 
-- **Kompilierung** des Quellcodes (bei kompilierten Sprachen)
-- **Abhängigkeitsmanagement** (Bibliotheken, Frameworks)
-- **Paketierung** in deploybare Einheiten (JAR, WAR, Docker-Image, etc.)
-- **Versionierung** der Artefakte
-- **Qualitätsprüfungen** (Statische Code-Analyse, Linting)
+* **Transpilierung** des React-Codes: Umwandlung von JSX und modernem JavaScript (ES6+) in browserfähiges JavaScript
+* **Abhängigkeitsmanagement**: Installation aller erforderlichen npm-Pakete für Frontend und Backend mit `npm install`
+* **Paketierung**: 
+  * Frontend: Webpack bündelt React-Komponenten, CSS und Assets in optimierte statische Dateien im `build`-Verzeichnis
+  * Backend: Express-Server-Code wird in ein Verzeichnis kopiert, oft wird `node_modules` für Produktion optimiert
+* **Versionierung**: Setzen der Versionsnummer in `package.json`, eventuell Generierung von Build-Hashes für Cache-Busting
+* **Qualitätsprüfungen**: ESLint für JavaScript/TypeScript-Codequalität, Jest für automatisierte Tests
 
-Beispiel: Ein Java-Build-Prozess umfasst die Kompilierung des Quellcodes, das Ausführen von Unit-Tests, die Erstellung eines JAR-Files und eventuell die Erstellung eines Docker-Images.
-
+**Beispiel**: Der Build-Prozess für eine Full-Stack-JavaScript-Anwendung umfasst das Ausführen von `npm run build`, was die React-App für Produktion bundelt und optimiert, dann die Express-API-Dateien verarbeitet und schließlich alles in ein Docker-Image packt für ein konsistentes Deployment.
 ### Test
 
 **Tests** stellen die Qualität und Zuverlässigkeit der Software sicher:
