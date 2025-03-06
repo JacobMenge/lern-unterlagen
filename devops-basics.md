@@ -590,17 +590,6 @@ Die Unterschiede sind einfach zu verstehen:
 
 Beispiel: Bei DevSecOps werden Sicherheitstests direkt in die Pipeline eingebaut, so dass jede Code-Änderung automatisch auf Sicherheitslücken geprüft wird. Bei BizDevOps sitzen auch Fachexperten mit im Team und helfen dabei, den Geschäftswert der Software zu maximieren.
 
-### 8. Welche Herausforderungen gibt es bei der Einführung von DevOps?
-Die häufigsten Hürden bei der DevOps-Einführung sind:
-
-- **Kultureller Widerstand**: "Wir haben es immer so gemacht" – Gewohnheiten zu ändern ist schwer
-- **Fehlende Fähigkeiten**: DevOps erfordert neue Kenntnisse in Automatisierung, Cloud etc.
-- **Legacy-Systeme**: Alte Anwendungen lassen sich oft schwer in moderne CI/CD-Pipelines integrieren
-- **Ressourcenmangel**: DevOps-Transformation braucht anfangs Zeit und Investitionen
-- **Unklare Verantwortlichkeiten**: Wenn alte Teamgrenzen verschwimmen, kann Unsicherheit entstehen
-
-Tipp für den Einstieg: Fang klein an! Wähle ein überschaubares Projekt für deine ersten DevOps-Schritte und erweitere von dort aus.
-
 ---
 
 ## Weiterführende Ressourcen
@@ -610,11 +599,6 @@ Tipp für den Einstieg: Fang klein an! Wähle ein überschaubares Projekt für d
 - "Accelerate" von Nicole Forsgren, Jez Humble und Gene Kim
 - "The DevOps Handbook" von Gene Kim, Jez Humble, Patrick Debois und John Willis
 - "Site Reliability Engineering" von Google
-
-### Online-Kurse
-- "DevOps Essentials" (edX)
-- "Implementing DevOps" (Coursera)
-- "DevOps Foundations" (LinkedIn Learning)
 
 ### Websites und Blogs
 - DevOps.com
