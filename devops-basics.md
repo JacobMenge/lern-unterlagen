@@ -193,18 +193,41 @@ Konkrete Schritte zur Überwindung von Silodenken:
 
 quelle: https://www.browserstack.com/guide/devops-lifecycle
 
-Der DevOps Lifecycle ist ein kontinuierlicher Prozess, der aus mehreren miteinander verbundenen Phasen besteht:
+Das Bild zeigt den DevOps-Lebenszyklus als Unendlichkeitszeichen (∞), was wirklich clever ist. Es zeigt nämlich genau, worum es bei DevOps geht: einen nie endenden Kreislauf, bei dem Entwicklung und Betrieb Hand in Hand arbeiten.
 
-1. **Plan**: Planung und Definition von Anforderungen
-2. **Code**: Entwicklung der Software
-3. **Build**: Kompilieren des Codes und Erstellen von Artefakten
-4. **Test**: Umfassende Tests zur Qualitätssicherung
-5. **Release**: Vorbereitung der Software für die Bereitstellung
-6. **Deploy**: Bereitstellung in der Produktionsumgebung
-7. **Operate**: Betrieb und Verwaltung der Anwendung
-8. **Monitor**: Überwachung und Sammlung von Feedback
+### Die Entwicklungsseite (Dev)
 
-Diese Phasen bilden eine Schleife (Infinity Loop), die kontinuierlich durchlaufen wird, um einen ständigen Fluss von Verbesserungen zu ermöglichen.
+**PLAN (Planen)**
+Hier geht's los. Das Team überlegt, was gebaut werden soll. Sie sammeln Ideen, besprechen neue Funktionen und planen, wer was macht. Stell dir vor, du planst eine Reise - du überlegst, wohin du willst und was du mitnehmen musst.
+
+**CODE (Programmieren)**
+Jetzt geht's ans Eingemachte: Die Entwickler schreiben den Code für die Software. Sie arbeiten zusammen, teilen ihre Arbeit und speichern alles in einem gemeinsamen System, damit nichts verloren geht - wie wenn mehrere Köche gemeinsam an einem Rezept arbeiten.
+
+**BUILD (Bauen)**
+Der geschriebene Code wird zusammengebaut. Das ist wie wenn du aus einzelnen Legosteinen ein fertiges Modell baust. Die verschiedenen Teile werden zu einem Ganzen zusammengefügt, und das System prüft, ob alles zusammenpasst.
+
+**TEST (Testen)**
+Funktioniert das, was wir gebaut haben, auch wirklich? Hier werden alle möglichen Tests durchgeführt. Das ist, als würdest du ein neues Auto probefahren, bevor du es kaufst - nur viel gründlicher und mit vielen automatischen Tests.
+
+### Die Betriebsseite (Ops)
+
+**RELEASE (Freigeben)**
+Alles ist getestet und bereit zum Einsatz. Diese Phase ist wie das Verpacken eines Geschenks - alles wird für die Auslieferung vorbereitet und mit einer schönen Schleife versehen (in Form von Versionsnummern und Dokumentation).
+
+**DEPLOY (Bereitstellen)**
+Jetzt kommt die Software zu den Nutzern! Die Anwendung wird auf Servern installiert und für alle zugänglich gemacht. Das ist wie wenn ein Restaurant seine Türen für Gäste öffnet - alles muss bereit sein.
+
+**OPERATE (Betreiben)**
+Die Software läuft jetzt und wird von den Teams am Laufen gehalten. Sie kümmern sich um alles, was für einen reibungslosen Betrieb nötig ist - wie ein Hausmeister, der dafür sorgt, dass in einem Gebäude alles funktioniert.
+
+**MONITOR (Überwachen)**
+Hier beobachten die Teams, wie gut die Software läuft. Gibt es Probleme? Ist sie zu langsam? Nutzen sie viele Leute? Das ist wie ein Gesundheits-Check - man behält alle wichtigen Werte im Auge und reagiert, wenn etwas nicht stimmt.
+
+### Und dann? Wieder von vorne!
+
+Das Besondere am DevOps-Lebenszyklus: Er endet nie. Was wir beim Überwachen lernen, fließt direkt in die nächste Planungsphase ein. So wird die Software ständig besser, Stück für Stück, in einem endlosen Kreislauf der Verbesserung.
+
+Das ist DevOps - ein nahtloser Fluss zwischen Entwicklung und Betrieb, bei dem alle zusammenarbeiten, um bessere Software schneller und zuverlässiger zu liefern.
 
 ### Continuous Integration
 
