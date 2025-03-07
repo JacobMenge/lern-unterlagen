@@ -355,98 +355,97 @@ Release-Strategien:
 
 ---
 
-## Methoden und Werkzeuge im DevOps-Umfeld
+# Methoden und Werkzeuge im DevOps-Umfeld
 
-### Planungsphase
-
-**Methoden**:
-- Agile Entwicklung (Scrum, Kanban)
-- User Story Mapping
-- Impact Mapping
-- Verhaltensgetriebene Entwicklung (BDD)
-
-**Werkzeuge**:
-- Jira, Asana, Trello (Projektmanagement)
-- Confluence, Notion (Dokumentation)
-- Miro, Lucidchart (Visualisierung)
-- GitLab, GitHub Issues (Ticketsysteme)
-
-### Entwicklungsphase
+## Planungsphase
 
 **Methoden**:
-- Test-Driven Development (TDD)
-- Pair Programming
-- Code Reviews
-- Trunk-Based Development
+* **Agile Entwicklung**: Scrum verwendet feste Sprints und definierte Rollen, Kanban visualisiert Arbeitsabläufe mit WIP-Limits (Work in Progress-Limits)
+* **User Story Mapping**: Verbindet Benutzeraktivitäten mit Funktionen zur besseren Priorisierung
+* **Impact Mapping**: Verknüpft Geschäftsziele mit konkreten Entwicklungsaktivitäten
+* **BDD (Behavior-Driven Development)**: Definiert erwartetes Verhalten in natürlicher Sprache vor der Implementierung
 
 **Werkzeuge**:
-- Git, GitLab, GitHub, Bitbucket (Versionskontrolle)
-- IDEs: VS Code, IntelliJ, Eclipse
-- SonarQube (Code-Qualitätsanalyse)
-- Docker (Containerisierung)
+* **Jira, Asana, Trello**: Verwalten Aufgaben, User Stories und bieten Übersichten zum Projektfortschritt
+* **Confluence, Notion**: Zentrale Wissensdatenbanken für die Projektdokumentation
+* **Miro, Lucidchart**: Digitale Whiteboards für Planungssessions und Diagramme
+* **GitLab/GitHub Issues**: Integrierte Ticketsysteme zur Verfolgung von Bugs (Fehlern) und Features
 
-### Testphase
+## Entwicklungsphase
 
 **Methoden**:
-- Automatisierte Testpyramide
-- Shift-Left Testing
-- Chaos Engineering
-- Contract Testing
+* **TDD (Test-Driven Development)**: Tests werden vor der Implementierung geschrieben, um klare Anforderungen zu definieren
+* **Pair Programming**: Zwei Entwickler arbeiten zusammen für bessere Codequalität
+* **Code Reviews**: Systematische Überprüfung durch andere Teammitglieder
+* **Trunk-Based Development**: Regelmäßige Integration in einen Hauptzweig minimiert Merge-Konflikte
 
 **Werkzeuge**:
-- JUnit, pytest, Jest (Unit Testing)
-- Selenium, Cypress (UI-Tests)
-- Postman, REST Assured (API-Tests)
-- JMeter, Gatling (Lasttests)
-- OWASP ZAP, SonarQube (Sicherheitstests)
+* **Git, GitLab, GitHub**: Versionskontrollsysteme für kollaboratives Arbeiten
+* **VS Code, IntelliJ, Eclipse**: IDEs (Integrated Development Environments) mit Code-Vervollständigung und Debugging-Tools
+* **SonarQube**: Automatisierte Qualitätsanalyse zur Erkennung von Bugs und Schwachstellen
+* **Docker**: Containerisierung für konsistente Entwicklungsumgebungen
 
-### Bereitstellungsphase
+## Testphase
 
 **Methoden**:
-- Continuous Delivery/Deployment
-- GitOps
-- Infrastructure as Code
-- Immutable Infrastructure
+* **Testpyramide**: Hierarchischer Ansatz mit vielen Unit-Tests und weniger UI-Tests
+* **Shift-Left Testing**: Verlagert Tests früher in den Entwicklungsprozess
+* **Chaos Engineering**: Gezieltes Einführen von Fehlern zur Resilienzprüfung
+* **Contract Testing**: Testet Schnittstellen zwischen Services basierend auf definierten Formaten (z.b. Wie genau die Daten aussehen sollen, Welche Felder vorhanden sein müssen, Welche Formate verwendet werden)
 
 **Werkzeuge**:
-- Jenkins, GitLab CI/CD, GitHub Actions, CircleCI (CI/CD-Plattformen)
-- ArgoCD, Flux (GitOps)
-- Terraform, CloudFormation (Infrastructure as Code)
-- Ansible, Chef, Puppet (Konfigurationsmanagement)
-- Kubernetes, Docker Swarm (Container-Orchestrierung)
+* **JUnit, pytest, Jest**: Frameworks für automatisierte Unit-Tests
+* **Selenium, Cypress**: Automatisierung von browserbasiertem UI-Testing (User Interface-Testing)
+* **Postman, REST Assured**: Testen von API-Schnittstellen (Application Programming Interface)
+* **JMeter, Gatling**: Lasttest-Tools zur Performance-Messung
+* **OWASP ZAP (Zero Application Proxy), SonarQube**: Werkzeuge für automatisierte Sicherheitstests
 
-### Betriebsphase
+## Bereitstellungsphase
 
 **Methoden**:
-- Site Reliability Engineering (SRE)
-- Incident Management
-- Capacity Planning
-- Automatische Skalierung
+* **CI/CD (Continuous Integration/Continuous Delivery)**: Automatisiert den gesamten Release-Prozess bis zur Produktion
+* **GitOps**: Nutzt Git als einzige Informationsquelle für Infrastrukturänderungen
+* **Infrastructure as Code**: Definiert Infrastruktur in versionierten Konfigurationsdateien
+* **Immutable Infrastructure**: Server werden nie aktualisiert, sondern neu erstellt
 
 **Werkzeuge**:
-- Kubernetes, Nomad (Orchestrierung)
-- Helm (Kubernetes-Paketmanagement)
-- AWS, Azure, GCP (Cloud-Plattformen)
-- PagerDuty, OpsGenie (Incident Management)
+* **Jenkins, GitLab CI/CD**: Automatisieren Build- und Deployment-Prozesse
+* **ArgoCD, Flux**: GitOps-Implementierungen für Kubernetes
+* **Terraform, CloudFormation**: Deklarative Definition von Cloud-Ressourcen
+* **Ansible, Chef, Puppet**: Automatisieren der Serverkonfiguration
+* **Kubernetes, Docker Swarm**: Orchestrieren containerisierte Anwendungen
 
-### Überwachungsphase
+## Betriebsphase
 
 **Methoden**:
-- Observability (Logs, Metriken, Traces)
-- Synthetics Monitoring
-- Real User Monitoring (RUM)
-- Anomalieerkennung
+* **SRE (Site Reliability Engineering)**: Wendet Software-Engineering auf Infrastrukturprobleme an, definiert SLOs (Service Level Objectives)
+* **Incident Management**: Strukturierte Prozesse für Störungsbehandlung
+* **Capacity Planning**: Vorausschauende Ressourcenplanung
+* **Automatische Skalierung**: Dynamische Anpassung an aktuelle Anforderungen
 
 **Werkzeuge**:
-- Prometheus, Grafana (Metriken)
-- ELK Stack, Loki (Logging)
-- Jaeger, Zipkin (Tracing)
-- Datadog, New Relic (APM)
-- Sentry (Fehlerüberwachung)
+* **Kubernetes, Nomad**: Container-Orchestrierung mit Self-Healing
+* **Helm**: Paketmanagement für Kubernetes-Anwendungen
+* **AWS, Azure, GCP**: Cloud-Plattformen für skalierbare Infrastruktur
+* **PagerDuty, OpsGenie**: Alarmierung und Koordination bei Störungen
 
----
+## Überwachungsphase
 
-## Verwandte Konzepte
+**Methoden**:
+* **Observability**: Kombiniert Logs, Metriken und Traces für umfassende Systemüberwachung
+* **Synthetics Monitoring**: Simuliert regelmäßig Benutzerinteraktionen
+* **Real User Monitoring**: Erfasst echte Benutzererfahrungen
+* **Anomalieerkennung**: Identifiziert ungewöhnliche Muster automatisch
+
+**Werkzeuge**:
+* **Prometheus, Grafana**: Sammeln und visualisieren Metriken
+* **ELK Stack (Elasticsearch, Logstash, Kibana), Loki**: Zentrale Sammlung und Analyse von Logs
+* **Jaeger, Zipkin**: Verfolgen von Anfragen durch verteilte Systeme
+* **Datadog, New Relic**: Umfassende Anwendungsperformance-Überwachung (APM - Application Performance Monitoring)
+* **Sentry**: Erfasst und analysiert Anwendungsfehler in Echtzeit
+
+
+# Verwandte Konzepte
 
 ### DevSecOps
 
