@@ -42,6 +42,10 @@ Docker löst dieses Problem durch Containerisierung. Ein Docker-Container kapsel
    - Container starten in Sekunden (statt Minuten bei VMs)
    - Schnellere Entwicklungszyklen und Tests
 
+![image](https://github.com/user-attachments/assets/d654ec2a-d13b-482e-97d5-27d13698a241)
+
+quelle: https://jfrog.com/de/devops-tools/article/beginners-guide-to-docker/
+
 ## Die technischen Grundlagen
 
 ### Container vs. Virtuelle Maschinen
