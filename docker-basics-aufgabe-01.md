@@ -18,9 +18,6 @@ curl -fsSL https://get.docker.com | sudo sh
 # Docker starten
 sudo service docker start
 
-# Docker ohne sudo verwenden (optional)
-sudo usermod -aG docker $USER
-newgrp docker
 ```
 
 ## Grundlegende Docker-Befehle
