@@ -34,7 +34,7 @@ Erstelle einen Docker-Container für eine einfache Node.js-Anwendung, die eine R
   },
   {
     "id": 2,
-    "title": "Node.js und Container",
+    "title": "Napfgeflüster: Memoiren einer Feinschmecker-Katze",
     "author": "Jacobs Katze",
     "year": 2022
   }
