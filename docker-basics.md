@@ -42,7 +42,7 @@ Docker löst dieses Problem durch Containerisierung. Ein Docker-Container kapsel
    - Container starten in Sekunden (statt Minuten bei VMs)
    - Schnellere Entwicklungszyklen und Tests
 
-![image](https://github.com/user-attachments/assets/d654ec2a-d13b-482e-97d5-27d13698a241)
+![Container vs VM](https://github.com/user-attachments/assets/d654ec2a-d13b-482e-97d5-27d13698a241)
 
 quelle: https://jfrog.com/de/devops-tools/article/beginners-guide-to-docker/
 
@@ -80,49 +80,28 @@ Der Docker Client (`docker`) ist das Tool, mit dem Benutzer mit Docker interagie
 #### 3. Docker Registry
 Eine Docker Registry speichert Docker-Images. Docker Hub ist die öffentliche Registry mit tausenden öffentlichen Images.
 
-
 ### Container vs. Virtuelle Maschinen: Der grundlegende Unterschied
 
-![image](https://github.com/user-attachments/assets/e66fdbcf-416b-4c3d-b5f9-81b18cbf1d3d)
+![Container vs VMs Detailliert](https://github.com/user-attachments/assets/e66fdbcf-416b-4c3d-b5f9-81b18cbf1d3d)
 
 quelle: https://jfrog.com/de/devops-tools/article/beginners-guide-to-docker/
 
 Das Bild zeigt einen fundamentalen Vergleich zwischen zwei Virtualisierungstechnologien: **Container** (links) und **Virtuelle Maschinen** (rechts).
 
-### Container-Architektur (linke Seite)
-
-Die linke Seite zeigt die Container-Architektur:
-
+#### Container-Architektur (linke Seite):
 - **Containerized Applications (App A bis App F)**: Mehrere isolierte Anwendungen laufen als Container
 - **Container Engine**: Die Laufzeitumgebung (z.B. Docker Engine), die Container verwaltet
 - **Host Operating System**: Das Betriebssystem auf dem physischen Rechner
 - **Infrastructure**: Die zugrunde liegende Hardware
 
-#### Schlüsselmerkmale von Containern:
-- Teilen sich den Kernel des Host-Betriebssystems
-- Enthalten nur die Anwendung und ihre Abhängigkeiten
-- Sehr leichtgewichtig (meist nur wenige MB)
-- Starten in Sekundenbruchteilen
-- Hohe Ressourceneffizienz
-
-### Virtuelle Maschinen-Architektur (rechte Seite)
-
-Die rechte Seite zeigt die Architektur von virtuellen Maschinen:
-
+#### Virtuelle Maschinen-Architektur (rechte Seite):
 - **Virtual Machine mit App A, B und C**: Jede VM enthält eine komplette Betriebssysteminstanz
 - **Guest Operating System**: Jede VM hat ihr eigenes vollständiges Betriebssystem
 - **Hypervisor**: Software-Layer, der die Erstellung und Verwaltung von VMs ermöglicht
 - **Host Operating System**: Das Betriebssystem des physischen Rechners
 - **Infrastructure**: Die zugrunde liegende Hardware
 
-#### Schlüsselmerkmale von virtuellen Maschinen:
-- Jede VM enthält ein vollständiges Gastbetriebssystem
-- Stärkere Isolation zwischen den VMs
-- Höherer Ressourcenverbrauch (speicher- und CPU-intensiver)
-- Längere Startzeit (oft Minuten)
-- Größere Dateigröße (oft mehrere GB)
-
-### Hauptunterschiede auf einen Blick
+#### Hauptunterschiede auf einen Blick:
 
 | Aspekt | Container | Virtuelle Maschinen |
 |--------|-----------|---------------------|
@@ -135,14 +114,25 @@ Die rechte Seite zeigt die Architektur von virtuellen Maschinen:
 
 Diese unterschiedlichen Ansätze haben jeweils ihre eigenen Vorteile und Anwendungsbereiche. In modernen Umgebungen werden oft beide Technologien kombiniert, um ihre jeweiligen Stärken zu nutzen.
 
+## Was ist ein Dockerfile?
+
+Ein Dockerfile ist eine einfache Textdatei mit Anweisungen, die beschreiben, wie ein Docker-Container erstellt werden soll. Es ist wie ein Rezept oder eine Bauanleitung für ein Docker-Image:
+- Es listet alle benötigten "Zutaten" (Programme, Dateien) auf
+- Es beschreibt, wie diese "Zutaten" zusammengesetzt werden
+- Es legt fest, was passiert, wenn der Container startet
+
+## Was ist ein Docker-Image?
+
+Ein Docker-Image ist eine unveränderliche (read-only) Vorlage, die alles enthält, was zum Starten eines Containers benötigt wird. Du kannst es dir wie eine Schablone oder eine Blaupause vorstellen. Aus einem Image können viele Container erstellt werden.
 
 ### Zentrale Docker-Konzepte
 
 #### 1. Images
-Ein Docker-Image ist eine unveränderliche Vorlage, die alles enthält, was zum Ausführen einer Anwendung notwendig ist. Images:
-- Bestehen aus mehreren Schichten (Layers)
-- Werden mit einem Dockerfile definiert
-- Werden in Registries gespeichert
+Ein Docker-Image:
+- Besteht aus mehreren Schichten (Layers)
+- Wird mit einem Dockerfile definiert
+- Wird in Registries gespeichert
+- Ist unveränderlich (read-only)
 
 #### 2. Container
 Ein Container ist eine laufende Instanz eines Images. Container:
@@ -151,7 +141,94 @@ Ein Container ist eine laufende Instanz eines Images. Container:
 - Können miteinander kommunizieren
 
 #### 3. Dockerfile
-Ein Dockerfile ist eine Textdatei mit Anweisungen zum Erstellen eines Docker-Images:
+Ein Dockerfile ist eine Textdatei mit Anweisungen zum Erstellen eines Docker-Images.
+
+## Die wichtigsten Dockerfile-Befehle
+
+Hier sind die grundlegenden Dockerfile-Befehle, die du kennen solltest:
+
+### FROM
+
+```dockerfile
+FROM nginx:alpine
+```
+
+**Erklärung in einfachen Worten:**
+- "Nimm dieses fertige Paket als Grundlage"
+- Jedes Dockerfile muss mit FROM beginnen
+- Es gibt viele fertige Images auf Docker Hub (wie nginx, ubuntu, python)
+- "alpine" ist eine besonders kleine Linux-Version
+
+### COPY
+
+```dockerfile
+COPY index.html /usr/share/nginx/html/
+```
+
+**Erklärung in einfachen Worten:**
+- "Kopiere diese Datei von meinem Computer in den Container"
+- Links: Die Datei auf deinem Computer
+- Rechts: Wohin sie im Container kopiert werden soll
+- In unserem Beispiel: Kopiere die HTML-Datei dorthin, wo der Webserver sie finden kann
+
+### EXPOSE
+
+```dockerfile
+EXPOSE 80
+```
+
+**Erklärung in einfachen Worten:**
+- "Dieser Container wird auf Port 80 erreichbar sein"
+- Dies ist nur eine Information/Dokumentation
+- Um den Port wirklich zugänglich zu machen, brauchst du später den "-p" Parameter
+
+### CMD
+
+```dockerfile
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+**Erklärung in einfachen Worten:**
+- "Führe diesen Befehl aus, wenn der Container startet"
+- Dies ist der Hauptprozess des Containers
+- Wenn dieser Prozess beendet wird, stoppt auch der Container
+- In unserem Beispiel: Starte den Nginx-Webserver im Vordergrund
+
+### WORKDIR
+
+```dockerfile
+WORKDIR /app
+```
+
+**Erklärung in einfachen Worten:**
+- "Wechsle in dieses Verzeichnis für die nächsten Befehle"
+- Wie ein "cd" in der Kommandozeile
+- Erstellt das Verzeichnis automatisch, falls es nicht existiert
+
+### ENV
+
+```dockerfile
+ENV NAME="Wert"
+```
+
+**Erklärung in einfachen Worten:**
+- "Speichere diese Information im Container"
+- Setzt eine Umgebungsvariable
+- Programme im Container können darauf zugreifen
+- Zum Beispiel: `ENV PORT=8080` setzt die Variable PORT auf den Wert 8080
+
+### RUN
+
+```dockerfile
+RUN echo "Hallo" > /tmp/test.txt
+```
+
+**Erklärung in einfachen Worten:**
+- "Führe diesen Befehl während des Baus des Images aus"
+- Wird nur einmal ausgeführt, wenn das Image erstellt wird
+- Gut für Installation von Software oder Vorbereitung des Images
+
+### Beispiel eines vollständigen Dockerfiles
 
 ```dockerfile
 # Basis-Image definieren
@@ -174,41 +251,137 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
-## Docker in der Praxis: Erste Schritte
+## Docker-Befehle in der Kommandozeile
 
-### Grundlegende Docker-Befehle
+Diese Befehle wirst du häufig von der Kommandozeile aus verwenden:
 
-#### Images verwalten:
+### docker build
+
 ```bash
-# Image herunterladen
-docker pull nginx
+docker build -t meine-webseite .
+```
 
-# Alle lokalen Images anzeigen
+**Erklärung in einfachen Worten:**
+- "Erstelle ein Image aus dem Dockerfile"
+- `-t meine-webseite`: Gib dem Image einen Namen (Tag)
+- `.`: Suche das Dockerfile im aktuellen Verzeichnis
+
+### docker run
+
+```bash
+docker run -d -p 8080:80 --name mein-webserver meine-webseite
+```
+
+**Erklärung in einfachen Worten:**
+- "Starte einen Container aus diesem Image"
+- `-d`: Lasse ihn im Hintergrund laufen (detached)
+- `-p 8080:80`: Verbinde Port 8080 auf deinem Computer mit Port 80 im Container
+- `--name mein-webserver`: Gib dem Container einen Namen
+- `meine-webseite`: Verwende dieses Image
+
+### docker stop
+
+```bash
+docker stop mein-webserver
+```
+
+**Erklärung in einfachen Worten:**
+- "Halte diesen Container an"
+- Der Container wird gestoppt, aber nicht gelöscht
+- Du kannst ihn später wieder starten
+
+### docker rm
+
+```bash
+docker rm mein-webserver
+```
+
+**Erklärung in einfachen Worten:**
+- "Lösche diesen Container"
+- Entfernt den Container vollständig
+- Die Daten im Container gehen verloren, wenn sie nicht woanders gespeichert wurden
+
+### docker logs
+
+```bash
+docker logs mein-webserver
+```
+
+**Erklärung in einfachen Worten:**
+- "Zeige mir alle Ausgaben dieses Containers"
+- Nützlich, um Probleme zu finden oder zu sehen, was im Container passiert
+
+### docker exec
+
+```bash
+docker exec -it mein-webserver sh
+```
+
+**Erklärung in einfachen Worten:**
+- "Öffne eine Kommandozeile im laufenden Container"
+- `-it`: Macht die Verbindung interaktiv (du kannst Befehle eingeben)
+- `sh`: Starte eine Shell im Container
+- Du kannst dann Befehle im Container ausführen, wie wenn du direkt darin wärst
+
+### docker images
+
+```bash
 docker images
-
-# Eigenes Image aus Dockerfile erstellen
-docker build -t meine-app .
 ```
 
-#### Container verwalten:
+**Erklärung in einfachen Worten:**
+- "Zeige mir alle Images, die ich auf meinem Computer habe"
+- Listet alle lokal gespeicherten Images auf
+
+### docker ps
+
 ```bash
-# Container starten
-docker run -d -p 8080:80 nginx
-
-# Laufende Container anzeigen
 docker ps
-
-# In einen laufenden Container einsteigen
-docker exec -it mein-container bash
-
-# Container stoppen
-docker stop mein-container
-
-# Container löschen
-docker rm mein-container
 ```
 
-### Ein einfaches Beispiel
+**Erklärung in einfachen Worten:**
+- "Zeige mir alle laufenden Container"
+- Mit `-a` werden auch gestoppte Container angezeigt: `docker ps -a`
+
+### docker pull
+
+```bash
+docker pull nginx
+```
+
+**Erklärung in einfachen Worten:**
+- "Lade dieses Image herunter, ohne es zu starten"
+- Nützlich, um Images vorab zu laden
+
+## Wichtige Konzepte für die Übung
+
+### Basis-Images
+
+Docker-Images bauen aufeinander auf. In unserer Übung verwenden wir `nginx:alpine` als Basis. Dies ist ein fertiges Image mit dem Nginx-Webserver auf Basis von Alpine Linux (einer sehr kleinen Linux-Distribution).
+
+### Container vs. Images
+
+- **Image**: Die unveränderliche Vorlage (wie eine ISO-Datei)
+- **Container**: Eine laufende Instanz eines Images (wie ein installiertes Betriebssystem)
+
+Ein wichtiges Konzept: Du kannst ein Image erstellen, aber nicht mehr verändern. Um Änderungen zu machen, musst du ein neues Image bauen.
+
+### Port-Weiterleitung
+
+Container haben ihr eigenes Netzwerk. Wenn ein Programm im Container auf Port 80 läuft, ist es zunächst nur innerhalb des Containers erreichbar. Mit der Port-Weiterleitung `-p 8080:80` sagst du Docker:
+
+"Wenn jemand auf meinem Computer Port 8080 aufruft, leite die Anfrage an Port 80 im Container weiter."
+
+### Container-Lebenszyklus
+
+1. **Erstellen**: `docker build` erstellt ein Image
+2. **Starten**: `docker run` startet einen Container aus dem Image
+3. **Stoppen**: `docker stop` hält den Container an
+4. **Entfernen**: `docker rm` löscht den Container
+
+Wichtig: Ein gestoppter Container behält seinen Zustand bei, aber wenn du einen Container löschst, gehen alle Änderungen verloren, die nicht in einem Volume oder auf andere Weise gespeichert wurden.
+
+## Ein einfaches praktisches Beispiel
 
 Hier ist ein Beispiel für eine einfache Web-Anwendung mit Docker:
 
@@ -243,14 +416,3 @@ docker run -d -p 8080:80 demo-webserver
 ```
 
 5. Im Browser öffnen: http://localhost:8080
-
-## Zusammenfassung
-
-Docker löst das Hauptproblem der Softwareentwicklung – die Umgebungsinkonsistenz – und bietet zahlreiche weitere Vorteile:
-
-- Konsistente Umgebungen überall
-- Isolierte Anwendungen
-- Effiziente Ressourcennutzung
-- Schneller Start und Betrieb
-
-In den nächsten Abschnitten werden wir auf fortgeschrittene Themen eingehen und praktische Anwendungsfälle betrachten.
