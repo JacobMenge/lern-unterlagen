@@ -1,4 +1,4 @@
-# Dockerfile Übung: Erste Schritte
+# Dockerfile Übung: Erste Schritte mit Dockerfile + Eigenes Image erstellen und verwenden
 
 In dieser praktischen Übung erstellen wir Schritt für Schritt unser erstes Dockerfile und lernen die Grundlagen kennen.
 
