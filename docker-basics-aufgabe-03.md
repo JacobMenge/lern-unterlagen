@@ -337,4 +337,4 @@ In dieser Übung hast du:
 6. Grundlegende Docker-Befehle kennengelernt
 7. Ein erweitertes Dockerfile mit mehr Funktionen erstellt
 
-Herzlichen Glückwunsch zu deinem ersten Dockerfile!
+
