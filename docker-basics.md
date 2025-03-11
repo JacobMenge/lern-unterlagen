@@ -114,9 +114,9 @@ Das Bild zeigt einen fundamentalen Vergleich zwischen zwei Virtualisierungstechn
 
 Diese unterschiedlichen Ansätze haben jeweils ihre eigenen Vorteile und Anwendungsbereiche. In modernen Umgebungen werden oft beide Technologien kombiniert, um ihre jeweiligen Stärken zu nutzen.
 
-### Zentrale Docker-Konzepte
+# Zentrale Docker-Konzepte
 
-#### 1. Images
+## 1. Images
 Ein Docker-Image ist eine unveränderliche (read-only) Vorlage, die alles enthält, was zum Starten eines Containers benötigt wird. Du kannst es dir wie eine Schablone oder eine Blaupause vorstellen. Aus einem Image können viele Container erstellt werden.
 
 Ein Docker-Image:
@@ -125,23 +125,23 @@ Ein Docker-Image:
 - Wird in Registries gespeichert
 - Ist unveränderlich (read-only)
 
-#### 2. Container
+## 2. Container
 Ein Container ist eine laufende Instanz eines Images. Container:
 - Haben ihre eigenen Dateisysteme
 - Sind voneinander isoliert
 - Können miteinander kommunizieren
 
-#### 3. Dockerfile
+## 3. Dockerfile
 Ein Dockerfile ist eine einfache Textdatei mit Anweisungen, die beschreiben, wie ein Docker-Container erstellt werden soll. Es ist wie ein Rezept oder eine Bauanleitung für ein Docker-Image:
 - Es listet alle benötigten "Zutaten" (Programme, Dateien) auf
 - Es beschreibt, wie diese "Zutaten" zusammengesetzt werden
 - Es legt fest, was passiert, wenn der Container startet
 
-## Die wichtigsten Dockerfile-Befehle
+### Die wichtigsten Dockerfile-Befehle
 
 Hier sind die grundlegenden Dockerfile-Befehle, die du kennen solltest:
 
-### FROM
+#### FROM
 
 ```dockerfile
 FROM nginx:alpine
@@ -153,7 +153,7 @@ FROM nginx:alpine
 - Es gibt viele fertige Images auf Docker Hub (wie nginx, ubuntu, python)
 - "alpine" ist eine besonders kleine Linux-Version
 
-### COPY
+#### COPY
 
 ```dockerfile
 COPY index.html /usr/share/nginx/html/
@@ -165,7 +165,7 @@ COPY index.html /usr/share/nginx/html/
 - Rechts: Wohin sie im Container kopiert werden soll
 - In unserem Beispiel: Kopiere die HTML-Datei dorthin, wo der Webserver sie finden kann
 
-### EXPOSE
+#### EXPOSE
 
 ```dockerfile
 EXPOSE 80
@@ -176,7 +176,7 @@ EXPOSE 80
 - Dies ist nur eine Information/Dokumentation
 - Um den Port wirklich zugänglich zu machen, brauchst du später den "-p" Parameter
 
-### CMD
+#### CMD
 
 ```dockerfile
 CMD ["nginx", "-g", "daemon off;"]
@@ -188,7 +188,7 @@ CMD ["nginx", "-g", "daemon off;"]
 - Wenn dieser Prozess beendet wird, stoppt auch der Container
 - In unserem Beispiel: Starte den Nginx-Webserver im Vordergrund
 
-### WORKDIR
+#### WORKDIR
 
 ```dockerfile
 WORKDIR /app
@@ -199,7 +199,7 @@ WORKDIR /app
 - Wie ein "cd" in der Kommandozeile
 - Erstellt das Verzeichnis automatisch, falls es nicht existiert
 
-### ENV
+#### ENV
 
 ```dockerfile
 ENV NAME="Wert"
@@ -211,7 +211,7 @@ ENV NAME="Wert"
 - Programme im Container können darauf zugreifen
 - Zum Beispiel: `ENV PORT=8080` setzt die Variable PORT auf den Wert 8080
 
-### RUN
+#### RUN
 
 ```dockerfile
 RUN echo "Hallo" > /tmp/test.txt
