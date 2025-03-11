@@ -114,20 +114,11 @@ Das Bild zeigt einen fundamentalen Vergleich zwischen zwei Virtualisierungstechn
 
 Diese unterschiedlichen Ansätze haben jeweils ihre eigenen Vorteile und Anwendungsbereiche. In modernen Umgebungen werden oft beide Technologien kombiniert, um ihre jeweiligen Stärken zu nutzen.
 
-## Was ist ein Dockerfile?
-
-Ein Dockerfile ist eine einfache Textdatei mit Anweisungen, die beschreiben, wie ein Docker-Container erstellt werden soll. Es ist wie ein Rezept oder eine Bauanleitung für ein Docker-Image:
-- Es listet alle benötigten "Zutaten" (Programme, Dateien) auf
-- Es beschreibt, wie diese "Zutaten" zusammengesetzt werden
-- Es legt fest, was passiert, wenn der Container startet
-
-## Was ist ein Docker-Image?
-
-Ein Docker-Image ist eine unveränderliche (read-only) Vorlage, die alles enthält, was zum Starten eines Containers benötigt wird. Du kannst es dir wie eine Schablone oder eine Blaupause vorstellen. Aus einem Image können viele Container erstellt werden.
-
 ### Zentrale Docker-Konzepte
 
 #### 1. Images
+Ein Docker-Image ist eine unveränderliche (read-only) Vorlage, die alles enthält, was zum Starten eines Containers benötigt wird. Du kannst es dir wie eine Schablone oder eine Blaupause vorstellen. Aus einem Image können viele Container erstellt werden.
+
 Ein Docker-Image:
 - Besteht aus mehreren Schichten (Layers)
 - Wird mit einem Dockerfile definiert
@@ -141,7 +132,10 @@ Ein Container ist eine laufende Instanz eines Images. Container:
 - Können miteinander kommunizieren
 
 #### 3. Dockerfile
-Ein Dockerfile ist eine Textdatei mit Anweisungen zum Erstellen eines Docker-Images.
+Ein Dockerfile ist eine einfache Textdatei mit Anweisungen, die beschreiben, wie ein Docker-Container erstellt werden soll. Es ist wie ein Rezept oder eine Bauanleitung für ein Docker-Image:
+- Es listet alle benötigten "Zutaten" (Programme, Dateien) auf
+- Es beschreibt, wie diese "Zutaten" zusammengesetzt werden
+- Es legt fest, was passiert, wenn der Container startet
 
 ## Die wichtigsten Dockerfile-Befehle
 
