@@ -410,3 +410,213 @@ docker run -d -p 8080:80 demo-webserver
 ```
 
 5. Im Browser öffnen: http://localhost:8080
+
+
+# Daten in Docker verwalten
+
+Docker-Container sind von Natur aus vergänglich - wenn ein Container gelöscht wird, gehen alle darin gespeicherten Daten verloren. Für Anwendungen, die Daten speichern müssen (z.B. Datenbanken, Nutzeruploads oder Konfigurationsdateien), ist es daher wichtig, eine Lösung für persistente Datenspeicherung zu haben. Docker bietet dafür verschiedene Optionen.
+
+## Überblick der Datenspeicheroptionen in Docker
+
+Docker bietet drei Hauptansätze zur Datenspeicherung, die sich je nach Anwendungsfall unterscheiden. Die folgende Abbildung illustriert diese Methoden:
+
+![image](https://github.com/user-attachments/assets/a4c15975-cb99-4486-b599-0ab8c81ac71b)
+
+*Quelle: [Understanding Volumes, Bind Mounts and tmpfs Mounts: A Comparison](https://akdashish07.medium.com/understanding-volumes-bind-mounts-and-tmpfs-mounts-a-comparison-bc6dd93b1ff4)*
+
+Wie die Abbildung zeigt, gibt es drei verschiedene Wege, wie Container auf Daten zugreifen können:
+
+1. **Bind Mounts**: Direkter Zugriff auf das Host-Dateisystem
+2. **Volumes**: Von Docker verwaltete Speicherbereiche
+3. **tmpfs Mounts**: Speicherung nur im Arbeitsspeicher
+
+Jede dieser Methoden hat ihre eigenen Vor- und Nachteile, die wir im Folgenden detailliert betrachten werden.
+
+## Bind Mounts für die Entwicklung
+
+Ein Bind Mount verbindet ein Verzeichnis oder eine Datei auf deinem Host-System direkt mit einem Pfad innerhalb des Containers.
+
+### Grundlegende Verwendung
+
+```bash
+docker run -v /pfad/auf/host:/pfad/im/container image-name
+```
+
+Oder mit dem aktuellen Verzeichnis:
+
+```bash
+docker run -v $(pwd):/app meine-app
+```
+
+**Was passiert hier?**
+- Ein Verzeichnis auf deinem Computer wird mit einem Verzeichnis im Container verbunden
+- Alle Änderungen im Host-Verzeichnis sind sofort im Container sichtbar und umgekehrt
+- Die gleichen Dateien sind an zwei Orten verfügbar, ohne dass sie kopiert werden müssen
+
+### Anwendungsbeispiel für die Entwicklung
+
+```bash
+# Starten eines Node.js-Containers mit Bind Mount für den Quellcode
+docker run -d \
+  --name node-dev \
+  -v $(pwd):/app \
+  -p 3000:3000 \
+  node:14 \
+  sh -c "cd /app && npm install && npm start"
+```
+
+**Erklärung:**
+- Das aktuelle Verzeichnis (`$(pwd)`) wird in den Container unter `/app` gemountet
+- Wenn du eine Datei auf deinem Computer änderst, ist die Änderung sofort im Container sichtbar
+- Perfekt für die Entwicklung: Bearbeite Code mit deinen lokalen Editoren, teste ihn im Container
+
+### Nur-Lese-Mounts
+
+Du kannst Bind Mounts auch im Nur-Lese-Modus mounten, damit der Container die Dateien nicht verändern kann:
+
+```bash
+docker run -v /pfad/auf/host:/pfad/im/container:ro image-name
+```
+
+## Volumes für persistente Daten
+
+Docker Volumes sind der bevorzugte Mechanismus für persistente Daten in Docker. Im Gegensatz zu Bind Mounts werden sie vollständig von Docker verwaltet.
+
+### Arten von Volumes
+
+#### 1. Benannte Volumes
+
+Benannte Volumes haben einen spezifischen Namen und können leicht wiederverwendet werden:
+
+```bash
+# Volume erstellen
+docker volume create mein-datenvolume
+
+# Container mit benanntem Volume starten
+docker run -v mein-datenvolume:/var/lib/mysql mysql
+```
+
+#### 2. Anonyme Volumes
+
+Anonyme Volumes werden automatisch erstellt und erhalten eine zufällige ID:
+
+```bash
+# Ein anonymes Volume für /var/lib/mysql erstellen
+docker run -v /var/lib/mysql mysql
+```
+
+Docker erstellt ein Volume und mountet es an den angegebenen Pfad. Diese Volumes werden standardmäßig mit dem Container entfernt, wenn du `docker rm -v` verwendest.
+
+### Befehle zur Verwaltung von Volumes
+
+```bash
+# Alle Volumes anzeigen
+docker volume ls
+
+# Details zu einem Volume anzeigen
+docker volume inspect mein-datenvolume
+
+# Ein Volume löschen
+docker volume rm mein-datenvolume
+
+# Nicht verwendete Volumes löschen
+docker volume prune
+```
+
+### Praktisches Beispiel: Datenbank mit persistenten Daten
+
+```bash
+# MySQL-Datenbank mit persistenten Daten
+docker run -d \
+  --name mysql-db \
+  -v mysql-data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=mein-passwort \
+  -e MYSQL_DATABASE=meine-db \
+  mysql:8.0
+```
+
+**Erklärung:**
+- Das benannte Volume `mysql-data` speichert alle Datenbankdateien
+- Selbst wenn der Container gestoppt oder gelöscht wird, bleiben die Daten im Volume erhalten
+- Bei einem Neustart des Containers mit demselben Volume sind alle Daten wieder verfügbar
+
+## Tmpfs Mounts: Temporäre Daten im Arbeitsspeicher
+
+Für wirklich temporäre Daten bietet Docker auch tmpfs Mounts, die Daten nur im Arbeitsspeicher speichern:
+
+```bash
+docker run --tmpfs /tmp mein-image
+```
+
+**Erklärung:**
+- Daten werden im RAM statt auf der Festplatte gespeichert
+- Sehr schnell, aber alle Daten gehen verloren, wenn der Container stoppt
+- Nützlich für sensible Daten oder temporäre Dateien, die nicht persistiert werden sollen
+
+## Kombination von Bind Mounts und Volumes
+
+Oft ist es sinnvoll, Bind Mounts und Volumes zu kombinieren, besonders in Entwicklungsumgebungen.
+
+```bash
+docker run -d \
+  --name node-app \
+  -v $(pwd):/app \
+  -v /app/node_modules \
+  -p 3000:3000 \
+  node:14 \
+  sh -c "cd /app && npm install && npm start"
+```
+
+**Erklärung:**
+- Der Quellcode wird über einen Bind Mount in den Container gebracht
+- Ein anonymes Volume für `/app/node_modules` verhindert, dass lokale `node_modules` die im Container installierten überschreiben
+- Du kannst den Code bearbeiten, während die Node.js-Module im Container verbleiben
+
+## Wann man was verwendet
+
+Die folgende Tabelle hilft bei der Auswahl der richtigen Datenspeichermethode für verschiedene Anwendungsfälle:
+
+| Anwendungsfall | Empfohlene Lösung | Begründung |
+|----------------|-------------------|------------|
+| **Entwicklung & Code-Änderungen** | Bind Mounts | Sofortige Aktualisierungen im Container sichtbar |
+| **Datenbanken** | Benannte Volumes | Daten bleiben erhalten, auch wenn Container neu erstellt werden |
+| **Konfigurationsdateien** | Bind Mounts (für Entwicklung)<br>Config-Objekte (für Produktion) | Einfache Bearbeitung und Anpassung |
+| **Anwendungsdaten** | Benannte Volumes | Bessere Performance und Isolation |
+| **Temporäre Daten** | Tmpfs Mounts oder anonyme Volumes | Werden automatisch mit dem Container gelöscht |
+| **Statische Inhalte** | Eingebaut im Image oder Bind Mounts | Unveränderliche Daten sollten Teil des Images sein |
+
+## Vergleich der Speichertypen
+
+| Speichertyp | Persistenz | Teilen zwischen Containern | Host-Zugriff | Leistung | Typische Anwendungsfälle |
+|-------------|------------|----------------------------|--------------|----------|--------------------------|
+| **Bind Mounts** | Ja | Ja | Direkt | Host-abhängig | Entwicklung, Konfigurationsdateien |
+| **Volumes** | Ja | Ja | Nur über Docker-Befehle | Optimiert | Datenbanken, Anwendungsdaten |
+| **tmpfs Mounts** | Nein | Nein | Nein | Sehr schnell | Temporäre Dateien, Sitzungsdaten |
+
+### Vorteile von Volumes gegenüber Bind Mounts
+
+1. **Sicherheit**: Volumes sind vom Host-Dateisystem isoliert
+2. **Portabilität**: Volumes funktionieren auf jedem System, das Docker ausführt
+3. **Performance**: Volumes können mit spezifischen Treibern optimiert werden
+4. **Verwaltbarkeit**: Volumes können mit Docker-Befehlen verwaltet werden
+5. **Funktionalität**: Volumes können von mehreren Containern gleichzeitig verwendet werden
+
+### Vorteile von Bind Mounts
+
+1. **Direkter Zugriff**: Dateien sind sowohl im Container als auch auf dem Host direkt zugänglich
+2. **Einfache Bearbeitung**: Entwickler können mit ihren gewohnten Tools am Host arbeiten
+3. **Keine zusätzliche Verwaltung**: Keine explizite Erstellung oder Verwaltung von Volumes notwendig
+4. **Gute Integration**: Perfekt für Entwicklungsworkflows
+
+## Best Practices
+
+1. **Klare Strategie**: Plane im Voraus, welche Daten persistiert werden müssen
+2. **Sprechende Namen**: Vergib aussagekräftige Namen für Volumes (`mysql-data` statt `vol1`)
+3. **Sicherheit beachten**: Achte auf Berechtigungen und Eigentumsverhältnisse der Dateien
+4. **Backup-Strategie**: Richte regelmäßige Backups für wichtige Volumes ein
+5. **Dokumentation**: Dokumentiere die Datenstruktur und den Zweck jedes Volumes
+
+```bash
+# Beispiel für Backup eines Docker-Volumes
+docker run --rm -v mysql-data:/source -v $(pwd)/backup:/backup alpine tar -czf /backup/mysql-backup.tar.gz -C /source .
+```
