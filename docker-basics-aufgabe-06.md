@@ -1,8 +1,8 @@
-# 🐳 Docker Container Monitoring Dashboard: Vollständige Erklärung
+# DockerStatsDash: Echtzeit-Containerüberwachung mit Volumes
 
 ## Projektübersicht
 
-Dieses Projekt erstellt ein Echtzeit-Monitoring-Dashboard für Docker-Container. Es besteht aus zwei Hauptkomponenten:
+Dieses Projekt, **DockerStatsDash**, erstellt ein Echtzeit-Monitoring-Dashboard für deine Docker-Container. Es besteht aus zwei Hauptkomponenten:
 
 1. **Log-Collector**: Sammelt Statistiken von allen laufenden Docker-Containern
 2. **Web-Frontend**: Zeigt diese Statistiken in einer benutzerfreundlichen Weboberfläche an
@@ -246,12 +246,12 @@ mkdir -p ~/container-monitor/log-collector ~/container-monitor/web-frontend
 
 ### Schritt 2: Dateien erstellen
 
-Speichern Sie jede Datei an ihrem entsprechenden Ort:
+Speichere jede Datei an ihrem entsprechenden Ort:
 - `collect-stats.sh` im Verzeichnis `log-collector`
 - `index.html` und `script.js` im Verzeichnis `web-frontend`
 - Die entsprechenden Dockerfiles in jedem Verzeichnis
 
-Machen Sie das Skript ausführbar:
+Mache das Skript ausführbar:
 ```bash
 chmod +x ~/container-monitor/log-collector/collect-stats.sh
 ```
@@ -294,7 +294,7 @@ docker run -d \
 
 ### Schritt 6: Dashboard aufrufen
 
-Öffnen Sie Ihren Webbrowser und navigieren Sie zu:
+Öffne deinen Webbrowser und navigiere zu:
 ```
 http://localhost:8080
 ```
@@ -319,13 +319,13 @@ http://localhost:8080
 ## Fehlerbehebung
 
 ### Wenn der Log-Collector keine Daten sammelt:
-Überprüfen Sie, ob der Container Zugriff auf den Docker-Socket hat:
+Überprüfe, ob der Container Zugriff auf den Docker-Socket hat:
 ```bash
 docker logs log-collector
 ```
 
 ### Wenn das Web-Frontend keine Daten anzeigt:
-Stellen Sie sicher, dass beide Container Zugriff auf das gemeinsame Volume haben:
+Stelle sicher, dass beide Container Zugriff auf das gemeinsame Volume haben:
 ```bash
 docker inspect monitoring-logs
 docker exec -it web-frontend ls -la /logs
