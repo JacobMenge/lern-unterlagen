@@ -1,6 +1,6 @@
 # Docker Compose Installation für WSL
 
-Diese Anleitung zeigt, wie Sie Docker Compose schnell in Ihrer WSL-Umgebung installieren können.
+Diese Anleitung zeigt dir, wie du Docker Compose schnell in Deiner WSL-Umgebung installieren kannst.
 
 ## Voraussetzungen
 - WSL ist bereits eingerichtet
@@ -51,9 +51,9 @@ docker compose version
 
 ## Hinweis zur Verwendung
 
-- Bei Option A verwenden Sie `docker compose` (mit Leerzeichen)
-- Bei Option B verwenden Sie `docker-compose` (mit Bindestrich)
+- Bei Option A verwendest Du `docker compose` (mit Leerzeichen)
+- Bei Option B verwendest Du `docker-compose` (mit Bindestrich)
 
 ## Fertig!
 
-Sie können jetzt Docker Compose in Ihrer WSL-Umgebung nutzen.
+Du kannst jetzt Docker Compose in Deiner WSL-Umgebung nutzen.
