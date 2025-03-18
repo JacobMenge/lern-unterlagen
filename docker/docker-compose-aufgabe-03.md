@@ -119,6 +119,30 @@ services:
 
 Identifiziere und korrigiere mindestens 3 Probleme in diesem File.
 
+## Aufgabe 5: Der Infrastruktur-Spaziergang
+
+Nach so viel Zeit mit Docker und Containern ist es wichtig, auch die eigene "Infrastruktur" zu warten. Nimm dir 20 Minuten Zeit für einen Spaziergang an der frischen Luft.
+
+### Warum ist das gesund?
+
+Als Informatiker im Homeoffice verbringen wir oft 8+ Stunden täglich sitzend vor dem Bildschirm, was mehrere negative Auswirkungen haben kann:
+
+1. **Körperliche Gesundheit**: Langes Sitzen erhöht das Risiko für Rückenprobleme, Herz-Kreislauf-Erkrankungen und Stoffwechselstörungen.
+
+2. **Kognitive Leistung**: Studien zeigen, dass regelmäßige Bewegung die Gehirndurchblutung fördert, was zu besserer Konzentration und Problemlösungsfähigkeit führt - genau das, was wir beim Debuggen komplexer Docker-Compose-Setups brauchen.
+
+3. **Debug-Effekt**: Wie beim Rubber-Duck-Debugging hilft das Weggehen vom Problem oft dabei, neue Lösungsansätze zu finden. Viele knifflige Container-Netzwerkprobleme lösen sich gedanklich während eines Spaziergangs.
+
+   > **Was ist Rubber-Duck-Debugging?** Diese Technik beschreibt, wie man durch das laute Erklären eines Problems oft selbst auf die Lösung kommt. Statt einer Gummiente kann das auch ein Kollege sein, der einfach nur zuhört, oder sogar ein leerer Stuhl. Das Wesentliche ist der Perspektivwechsel: Indem du versuchst, das Problem für jemand anderen verständlich zu machen, musst du es anders strukturieren und durchdenken. Bei diesem Prozess fällt dir häufig auf: "Moment mal, habe ich eigentlich geprüft, ob alle Container im selben Netzwerk sind?" oder "Warte, ich habe ja gar nicht verifiziert, ob die Umgebungsvariable richtig gesetzt wurde!" Ein Spaziergang funktioniert ähnlich - du trittst zurück vom Bildschirm, bekommst Abstand und siehst plötzlich den Wald vor lauter Bäumen wieder.
+
+4. **Augenentlastung**: Die 20-20-20-Regel empfiehlt, alle 20 Minuten für 20 Sekunden 20 Fuß (etwa 6 Meter) weit zu schauen, um Augenbelastung zu reduzieren. Ein Spaziergang bietet diese Entlastung automatisch.
+
+5. **Container für Gedanken**: Wie Docker Container isolierte Umgebungen bieten, schafft ein Spaziergang einen "Container" für deine Gedanken - abgekapselt von Slack-Benachrichtigungen und E-Mails.
+
+### Bonus-Aufgabe
+
+Überlege während des Spaziergangs, welche Parallelen es zwischen einem gut orchestrierten Docker-System und einem gesunden Lebensstil gibt.
+
 
 # Docker und Docker Compose Grundlagen - Lösungen
 
