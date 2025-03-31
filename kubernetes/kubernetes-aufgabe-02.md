@@ -1,6 +1,6 @@
 # Kubernetes Mittelstufe: Stateless API mit Datenbank
 
-Hey! In dieser Übung bauen wir eine API, die mit einer externen Datenbank spricht. Wir bewegen uns von der reinen Basis-Webseite zu einer interaktiveren Anwendung, bleiben aber noch überschaubarer als eine komplette Multi-Tier-Architektur.
+In dieser Übung bauen wir eine API, die mit einer externen Datenbank spricht. Wir bewegen uns von der reinen Basis-Webseite zu einer interaktiveren Anwendung, bleiben aber noch überschaubarer als eine komplette Multi-Tier-Architektur.
 
 ## Was wir lernen werden
 
