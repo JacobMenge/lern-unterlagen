@@ -253,7 +253,3 @@ Wenn du tiefer in Kubernetes einsteigen möchtest:
 **Weiterführende Quellen:**
 - [Kubernetes Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) - Offizielle Dokumentation
 - [Kubernetes Debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/) - Anwendungsfehler beheben
-
----
-
-Dieses Dokument bietet dir das notwendige Grundlagenwissen für die drei Kubernetes-Übungen und weiterführende Quellen zum Vertiefen. Bei spezifischen Fragen oder Problemen konsultiere die verlinkte Dokumentation oder frage im Classroom nach.
