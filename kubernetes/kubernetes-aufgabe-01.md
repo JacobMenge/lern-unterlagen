@@ -1,6 +1,6 @@
 # Kubernetes Grundlagen: Deine erste Web-App
 
-Hey! In dieser Übung bauen wir eine einfache Web-App in Kubernetes. Ich zeige dir Schritt für Schritt, wie du die grundlegenden Kubernetes-Konzepte in der Praxis anwendest.
+In dieser Übung bauen wir eine einfache Web-App in Kubernetes. Ich zeige dir Schritt für Schritt, wie du die grundlegenden Kubernetes-Konzepte in der Praxis anwendest.
 
 ## Warum Kubernetes lernen?
 
