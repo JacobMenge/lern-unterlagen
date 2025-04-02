@@ -25,52 +25,11 @@ Das Coole daran? Du kannst diese Dateien in deiner Versionskontrolle speichern, 
 
 Bevor wir richtig starten können, musst du Terraform auf deinem Rechner installieren:
 
-### Für Windows:
-1. Geh auf die [Terraform-Download-Seite](https://www.terraform.io/downloads.html)
-2. Lade die Windows-Version herunter
-3. Entpacke die ZIP-Datei
-4. Füge den Pfad zur terraform.exe zu deinen Umgebungsvariablen hinzu
-
-### Für MacOS:
-```bash
-brew install terraform
-```
-
 ### Für Linux mit Brians Installationsskript:
 
 Speichere zunächst das folgende Skript in einer Datei namens `install_terraform.sh`:
 
-```bash
-#! bin/bash
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-wget -O- https://apt.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-gpg --no-default-keyring \
---keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
---fingerprint
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
-# Tatsächlichen Fingerabdruck des gespeicherten Schlüssels abrufen
-ACTUAL_FINGERPRINT=$(gpg --no-default-keyring \
-  --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
-  --fingerprint | grep -Eo "([0-9A-F]{4} ){9}[0-9A-F]{4}")
-# Fingerabdruck vergleichen
-if [[ "$ACTUAL_FINGERPRINT" != "$EXPECTED_FINGERPRINT" ]]; then
-    echo "Fehler: Der GPG-Schlüssel stimmt nicht mit dem erwarteten Fingerabdruck überein!"
-    exit 1
-fi
-echo "GPG-Schlüssel erfolgreich überprüft!"
-sleep 3
-sudo apt update
-sudo apt-get install terraform
-terraform -v
-sleep 2
-echo "Terraform ist erfolgreich installiert worden"
-terraform -install-autocomplete
-echo "Terraform Auto Complete installiert"
-```
+https://github.com/BrianR-Back2Code/Terraform/blob/main/terraform_install.sh
 
 Führe dann folgende Befehle aus, um das Skript ausführbar zu machen und zu starten:
 ```bash
@@ -91,71 +50,6 @@ sudo apt-get update && sudo apt-get install terraform
 terraform version
 ```
 
-## Einrichtung mit der Techstarter AWS Sandbox
-
-Bevor wir mit unserem ersten Terraform-Projekt starten, müssen wir Terraform für die Arbeit mit der Techstarter AWS Sandbox konfigurieren.
-
-### AWS Zugang einrichten - Detaillierte Anleitung
-
-So erhältst du deine AWS Zugangsdaten von der Techstarter AWS Sandbox:
-
-1. **Zugang zur AWS Management Console**:
-   - Öffne den von Techstarter bereitgestellten Link zur AWS Sandbox
-   - Gib die Anmeldedaten ein, die du von deinem Ausbilder erhalten hast
-   - Nach erfolgreicher Anmeldung befindest du dich in der AWS Management Console
-
-2. **Erstellen eines IAM-Benutzers mit Zugriffsschlüsseln**:
-   - Klicke oben rechts auf deinen Kontonamen und wähle "Security Credentials" aus dem Dropdown-Menü
-   - Scrolle nach unten zum Abschnitt "Access keys"
-   - Klicke auf "Create access key" (Zugriffsschlüssel erstellen)
-   - Wähle als Anwendungsfall "Command Line Interface (CLI)" aus
-   - Setze den Haken bei "I understand..." und klicke auf "Next"
-   - Gib eine Beschreibung ein (z.B. "Terraform-Zugang") und klicke auf "Create access key"
-   - **WICHTIG**: Die Seite mit "Access key created" zeigt dir jetzt einmalig die Zugangsdaten an:
-     * Access key ID (Zugriffsschlüssel-ID)
-     * Secret access key (Geheimer Zugriffsschlüssel)
-   - Lade die .csv-Datei herunter oder kopiere beide Werte und bewahre sie sicher auf. Die geheimen Schlüssel werden dir nur EINMAL angezeigt!
-
-3. **Konfiguriere die AWS CLI mit deinen Zugangsdaten**:
-   ```bash
-   aws configure
-   ```
-   
-   Bei der Eingabeaufforderung gibst du folgende Informationen ein:
-   - AWS Access Key ID: [Deine Access Key ID aus Schritt 2]
-   - AWS Secret Access Key: [Dein Secret Access Key aus Schritt 2]
-   - Default region name: eu-central-1 (für Frankfurt)
-   - Default output format: json
-
-4. **Alternativ: Umgebungsvariablen setzen**:
-   Wenn du die Zugangsdaten nur temporär für die aktuelle Terminal-Sitzung verwenden möchtest:
-   ```bash
-   export AWS_ACCESS_KEY_ID="deine-access-key-id"
-   export AWS_SECRET_ACCESS_KEY="dein-secret-access-key"
-   export AWS_DEFAULT_REGION="eu-central-1"
-   ```
-   
-   Für Windows Command Prompt:
-   ```cmd
-   set AWS_ACCESS_KEY_ID=deine-access-key-id
-   set AWS_SECRET_ACCESS_KEY=dein-secret-access-key
-   set AWS_DEFAULT_REGION=eu-central-1
-   ```
-   
-   Für Windows PowerShell:
-   ```powershell
-   $env:AWS_ACCESS_KEY_ID="deine-access-key-id"
-   $env:AWS_SECRET_ACCESS_KEY="dein-secret-access-key"
-   $env:AWS_DEFAULT_REGION="eu-central-1"
-   ```
-
-5. **Überprüfen der Konfiguration**:
-   Um zu testen, ob deine Konfiguration funktioniert, führe folgenden Befehl aus:
-   ```bash
-   aws sts get-caller-identity
-   ```
-   
-   Bei erfolgreicher Konfiguration erhältst du eine Ausgabe mit deiner Konto-ID, Benutzer-ID und ARN.
 
 ### Beachte die Sandbox-Einschränkungen
 
