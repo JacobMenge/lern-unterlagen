@@ -4,7 +4,7 @@
 
 ## Einleitung
 
-Hey du! Schön, dass du dich für Terraform interessierst. In diesem Tutorial nehme ich dich an die Hand und zeige dir, wie du mit Terraform deine IT-Infrastruktur verwalten kannst. 
+In diesem Tutorial nehme ich dich an die Hand und zeige dir, wie du mit Terraform deine IT-Infrastruktur verwalten kannst. 
 
 Stell dir vor, du müsstest jeden Server, jedes Netzwerk und jede Datenbank manuell einrichten – das wäre wie ein Haus mit Hammer und Nagel zu bauen, ohne Bauplan. Terraform ist dein Bauplan für die Cloud, der dir hilft, deine gesamte Infrastruktur zu automatisieren.
 
