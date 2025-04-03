@@ -25,8 +25,6 @@ Wir werden Schritt für Schritt durch den Prozess gehen und ein einfaches "Hello
 
 3. Starte die CloudShell, indem du auf das CloudShell-Symbol in der oberen Navigationsleiste klickst (es sieht aus wie ein Kommandozeilen-Symbol >_).
 
-   ![CloudShell Icon](https://docs.aws.amazon.com/cloudshell/latest/userguide/images/cloudshell-icon.png)
-
 4. Die CloudShell wird in einem neuen Browser-Tab oder -Fenster geöffnet. Die Initialisierung kann einige Momente dauern.
 
 ## 2. Terraform in CloudShell installieren
