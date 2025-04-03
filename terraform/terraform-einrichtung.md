@@ -1,123 +1,79 @@
-# Terraform mit AWS - Einrichtung und erste Schritte
+# Terraform mit AWS - Einrichtung und erste Schritte in CloudShell
 
 ## Einleitung
 
-In diesem praktischen Teil lernst du, wie du Terraform mit deinem AWS-Account verbindest und deine ersten Schritte damit machst. Wir gehen jeden Schritt detailliert durch, von der Einrichtung der Umgebung bis zur Erstellung einer einfachen "Hello World"-Anwendung in AWS.
+In diesem praktischen Tutorial lernst du, wie du Terraform in der AWS CloudShell nutzen kannst, um deine erste Infrastruktur als Code zu erstellen. Die Verwendung der CloudShell bietet mehrere Vorteile, insbesondere in einer verwalteten AWS-Sandbox-Umgebung:
+
+- Keine lokale Installation von Terraform erforderlich
+- Automatische AWS-Authentifizierung (keine Access Keys nötig)
+- Konsistente Arbeitsumgebung für alle Teilnehmer
+- Direkte Integration mit deiner AWS-Umgebung
+
+Wir werden Schritt für Schritt durch den Prozess gehen und ein einfaches "Hello World"-Webserver-Projekt erstellen.
 
 ## Voraussetzungen
 
-- Terraform ist bereits installiert (wie gestern gemeinsam durchgeführt) --> https://github.com/BrianR-Back2Code/Terraform 
-- Du kannst in der WSL (Windows Subsystem for Linux), PowerShell oder deiner bevorzugten Shell arbeiten, wo Terraform installiert ist
-- Ein AWS-Account mit Zugriff auf die AWS Management Console
+- Zugang zu deiner AWS-Sandbox über [https://techstarter-sandboxes.awsapps.com/start](https://techstarter-sandboxes.awsapps.com/start)
 - Grundlegende Kenntnisse über Kommandozeilenbefehle
+- Keine lokale Terraform-Installation erforderlich - wir verwenden die AWS CloudShell!
 
-## 1. Überprüfen der Terraform-Installation
+## 1. AWS CloudShell starten
 
-Bevor wir starten, lass uns sicherstellen, dass Terraform korrekt installiert ist:
+1. Melde dich bei deiner AWS-Sandbox an: [https://techstarter-sandboxes.awsapps.com/start](https://techstarter-sandboxes.awsapps.com/start)
+
+2. Nach erfolgreicher Anmeldung befindest du dich in der AWS Management Console.
+
+3. Starte die CloudShell, indem du auf das CloudShell-Symbol in der oberen Navigationsleiste klickst (es sieht aus wie ein Kommandozeilen-Symbol >_).
+
+   ![CloudShell Icon](https://docs.aws.amazon.com/cloudshell/latest/userguide/images/cloudshell-icon.png)
+
+4. Die CloudShell wird in einem neuen Browser-Tab oder -Fenster geöffnet. Die Initialisierung kann einige Momente dauern.
+
+## 2. Terraform in CloudShell installieren
+
+AWS CloudShell hat viele Tools vorinstalliert, aber Terraform ist möglicherweise noch nicht darunter. Du kannst es schnell und einfach selbst installieren:
 
 ```bash
-terraform --version
+mkdir -p ~/bin
+wget -q -O terraform.zip https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
+unzip terraform.zip -d ~/bin
+rm terraform.zip
+export PATH=$PATH:~/bin
+echo 'export PATH=$PATH:~/bin' >> ~/.bashrc
 ```
 
-Du solltest eine Ausgabe ähnlich dieser sehen:
+Überprüfe die Installation mit:
+
+```bash
+terraform version
+```
+
+Du solltest eine Ausgabe sehen, die etwa so aussieht:
 ```
 Terraform v1.5.7
 on linux_amd64
 ```
 
-Wenn dieser Befehl funktioniert und eine Version anzeigt, ist Terraform korrekt installiert und wir können fortfahren.
-
-## 2. AWS-Zugangsdaten einrichten
-
-Für die Arbeit mit AWS benötigt Terraform Zugangsdaten. Wir werden einen programmatischen Zugang einrichten.
-
-### 2.1 IAM-Benutzer erstellen
-
-1. Melde dich in der https://techstarter-sandboxes.awsapps.com/start/ an
-
-2. Suche nach "IAM" und klicke auf den IAM-Service
-
-3. Klicke im linken Menü auf "Users" und dann auf "Create user"
-
-4. Gib einen Benutzernamen ein (z.B. "terraform-user") und klicke auf "Next"
-
-5. Wähle "Attach policies directly" und suche nach "AdministratorAccess"
-   > **Hinweis**: In einer Produktionsumgebung solltest du eingeschränktere Berechtigungen verwenden, aber für dieses Tutorial verwenden wir AdministratorAccess zur Vereinfachung
-
-6. Wähle die "AdministratorAccess"-Policy aus und klicke auf "Next"
-
-7. Überprüfe die Einstellungen und klicke auf "Create user"
-
-### 2.2 Access Keys erstellen
-
-1. Klicke auf den neu erstellten Benutzer in der IAM-Konsole
-
-2. Wechsle zum Tab "Security credentials"
-
-3. Scrolle zum Abschnitt "Access keys" und klicke auf "Create access key"
-
-4. Wähle "Command Line Interface (CLI)" als Anwendungsfall aus
-
-5. Setze optional ein Tag mit dem Schlüssel "Purpose" und dem Wert "Terraform" und klicke auf "Next"
-
-6. Klicke auf "Create access key"
-
-7. **WICHTIG**: Lade die .csv-Datei herunter und/oder notiere dir die "Access key ID" und den "Secret access key". Dies ist der einzige Zeitpunkt, zu dem du auf den Secret Access Key zugreifen kannst!
-
-### 2.3 AWS CLI konfigurieren
-
-Wir werden die AWS CLI verwenden, um die Zugangsdaten zu konfigurieren:
-
-1. Installiere die AWS CLI, falls noch nicht geschehen:
-
-   - **Windows (PowerShell)**:
-     ```powershell
-     msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
-     ```
-
-   - **WSL/Linux**:
-     ```bash
-     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-     unzip awscliv2.zip
-     sudo ./aws/install
-     ```
-
-2. Konfiguriere die AWS CLI:
-
-   ```bash
-   aws configure
-   ```
-
-3. Gib die folgenden Informationen ein, wenn du dazu aufgefordert wirst:
-   - AWS Access Key ID: [Deine Access Key ID]
-   - AWS Secret Access Key: [Dein Secret Access Key]
-   - Default region name: eu-central-1 (oder deine bevorzugte Region)
-   - Default output format: json
-
-Diese Konfiguration wird in `~/.aws/credentials` und `~/.aws/config` gespeichert. Terraform wird diese automatisch finden und verwenden.
-
 ## 3. Projekt-Verzeichnis erstellen
 
-Jetzt können wir ein Verzeichnis für unser Terraform-Projekt anlegen:
+Erstelle ein Verzeichnis für dein Terraform-Projekt:
 
 ```bash
 mkdir terraform-aws-hello-world
 cd terraform-aws-hello-world
 ```
 
-## 4. Erste Terraform-Dateien erstellen
+## 4. Terraform-Dateien erstellen
 
-Wir erstellen jetzt die grundlegenden Dateien für unser Projekt.
+Jetzt erstellen wir die notwendigen Terraform-Dateien direkt in der CloudShell. Du kannst dafür den integrierten Editor oder Kommandozeilen-Editoren wie `nano` oder `vim` verwenden.
 
 ### 4.1 providers.tf - AWS Provider konfigurieren
 
-Erstelle eine Datei `providers.tf`:
-
-```bash
-touch providers.tf
-```
-
-Öffne diese Datei in deinem bevorzugten Texteditor und füge Folgendes ein:
+Um den integrierten Editor zu verwenden:
+1. Klicke auf "Actions" in der CloudShell
+2. Wähle "New File"
+3. Gib den Dateinamen "providers.tf" ein
+4. Füge folgenden Inhalt ein:
 
 ```hcl
 terraform {
@@ -132,7 +88,8 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-central-1"  # Frankfurt, ändere dies bei Bedarf
+  # Region der AWS-Sandbox - passe diese ggf. an
+  region = "eu-central-1"
   
   default_tags {
     tags = {
@@ -143,21 +100,24 @@ provider "aws" {
 }
 ```
 
-Diese Datei definiert:
-- Den AWS-Provider, den wir verwenden werden
-- Die erforderliche Terraform-Version
-- Die AWS-Region, in der wir arbeiten werden
-- Standard-Tags, die auf alle Ressourcen angewendet werden
+Alternativ kannst du auch den Kommandozeilen-Editor `nano` verwenden:
+
+```bash
+nano providers.tf
+# Füge den obigen Inhalt ein, speichere mit Ctrl+O, beende mit Ctrl+X
+```
+
+**Wichtig**: Stelle sicher, dass du die richtige AWS-Region angibst. Die Region deiner AWS-Sandbox findest du in der oberen rechten Ecke der AWS Management Console.
 
 ### 4.2 variables.tf - Variablen definieren
 
 Erstelle eine Datei `variables.tf`:
 
 ```bash
-touch variables.tf
+nano variables.tf
 ```
 
-Füge Folgendes ein:
+Füge folgenden Inhalt ein:
 
 ```hcl
 variable "instance_name" {
@@ -179,17 +139,15 @@ variable "ssh_key_name" {
 }
 ```
 
-Diese Datei definiert Variablen, die wir in unserem Projekt verwenden können. Beachte, dass der SSH-Schlüssel optional ist - wir werden ihn in diesem Tutorial nicht verwenden, aber die Variable ist enthalten, falls du später SSH-Zugriff einrichten möchtest.
-
 ### 4.3 main.tf - Hauptkonfiguration
 
 Erstelle eine Datei `main.tf`:
 
 ```bash
-touch main.tf
+nano main.tf
 ```
 
-Füge Folgendes ein:
+Füge folgenden Inhalt ein:
 
 ```hcl
 # Neuestes Amazon Linux 2023 AMI finden
@@ -208,9 +166,26 @@ data "aws_ami" "amazon_linux" {
   }
 }
 
+# ALTERNATIVE: Falls Amazon Linux 2023 in deiner Region nicht verfügbar ist,
+# kommentiere den obigen Block aus und entferne die Kommentare vom folgenden Block:
+# data "aws_ami" "amazon_linux" {
+#   most_recent = true
+#   owners      = ["amazon"]
+#
+#   filter {
+#     name   = "name"
+#     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+#   }
+#
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
+# }
+
 # Security Group für den Webserver
 resource "aws_security_group" "web" {
-  name        = "terraform-hello-world-sg"
+  name        = "terraform-hello-world-sg-${formatdate("YYMMDDhhmmss", timestamp())}"  # Eindeutiger Name
   description = "Erlaubt HTTP-Verkehr"
 
   ingress {
@@ -243,7 +218,7 @@ resource "aws_instance" "web" {
               dnf install -y httpd
               systemctl start httpd
               systemctl enable httpd
-              echo '<html><head><title>Terraform Hello World</title></head><body><h1>Hello World from Terraform on AWS!</h1><p>Diese Seite wurde automatisch durch Terraform erstellt.</p></body></html>' > /var/www/html/index.html
+              echo '<html><head><title>Terraform Hello World</title></head><body><h1>Hello World from Terraform on AWS!</h1><p>Diese Seite wurde automatisch durch Terraform in der AWS CloudShell erstellt.</p><p>Dies ist deine erste AWS-Ressource, die mit Terraform in deiner Sandbox erstellt wurde.</p></body></html>' > /var/www/html/index.html
               EOF
 
   tags = {
@@ -252,20 +227,15 @@ resource "aws_instance" "web" {
 }
 ```
 
-Diese Datei:
-- Sucht nach dem neuesten Amazon Linux 2023 AMI
-- Erstellt eine Security Group, die HTTP-Verkehr (Port 80) erlaubt
-- Erstellt eine EC2-Instance mit einem einfachen Bootstrap-Skript, das einen Webserver installiert und eine "Hello World"-Seite einrichtet
-
 ### 4.4 outputs.tf - Ausgaben definieren
 
 Erstelle eine Datei `outputs.tf`:
 
 ```bash
-touch outputs.tf
+nano outputs.tf
 ```
 
-Füge Folgendes ein:
+Füge folgenden Inhalt ein:
 
 ```hcl
 output "instance_id" {
@@ -284,15 +254,11 @@ output "website_url" {
 }
 ```
 
-Diese Datei definiert Ausgaben, die nach der Erstellung der Infrastruktur angezeigt werden. Besonders nützlich ist die Website-URL, die wir später verwenden werden.
-
 ## 5. Terraform-Workflow ausführen
 
-Jetzt führen wir die Terraform-Befehle aus, um unsere Infrastruktur zu erstellen.
+Jetzt führen wir die Terraform-Befehle in der CloudShell aus, um unsere Infrastruktur zu erstellen.
 
 ### 5.1 Terraform initialisieren
-
-Im Projektverzeichnis führe aus:
 
 ```bash
 terraform init
@@ -303,35 +269,17 @@ Dieser Befehl:
 - Lädt den AWS-Provider herunter
 - Richtet die interne Terraform-Konfiguration ein
 
-Du solltest eine Ausgabe ähnlich dieser sehen:
-```
-Initializing the backend...
-
-Initializing provider plugins...
-- Finding hashicorp/aws versions matching "~> 5.0"...
-- Installing hashicorp/aws v5.19.0...
-- Installed hashicorp/aws v5.19.0 (signed by HashiCorp)
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-```
+Du solltest eine erfolgreiche Initialisierungsmeldung sehen.
 
 ### 5.2 Terraform-Plan erstellen
-
-Erstelle einen Ausführungsplan:
 
 ```bash
 terraform plan
 ```
 
-Dieser Befehl zeigt an, welche Ressourcen Terraform erstellen wird. Überprüfe den Plan sorgfältig. Du solltest sehen, dass Terraform eine EC2-Instance und eine Security Group erstellen wird.
+Dieser Befehl zeigt an, welche Ressourcen Terraform erstellen wird. Überprüfe den Plan sorgfältig.
 
 ### 5.3 Infrastruktur anwenden
-
-Jetzt wenden wir die Konfiguration an und erstellen die Ressourcen:
 
 ```bash
 terraform apply
@@ -353,68 +301,78 @@ website_url = "http://3.123.45.67"
 
 ## 6. Website testen
 
-Öffne einen Webbrowser und navigiere zur URL, die in der Ausgabe als `website_url` angegeben ist. Du solltest eine einfache Webseite mit der Nachricht "Hello World from Terraform on AWS!" sehen.
-
-Herzlichen Glückwunsch! Du hast erfolgreich:
-1. Terraform mit deinem AWS-Account verbunden
-2. Eine EC2-Instance mit einem Webserver erstellt
-3. Eine Security Group konfiguriert, um HTTP-Verkehr zuzulassen
-4. Eine einfache "Hello World"-Webseite bereitgestellt
+Öffne einen neuen Browser-Tab und navigiere zur URL, die in der Ausgabe als `website_url` angegeben ist. Du solltest eine einfache Webseite mit der Nachricht "Hello World from Terraform on AWS!" sehen.
 
 ## 7. Ressourcen aufräumen
 
-Wenn du mit dem Experiment fertig bist, solltest du die erstellten Ressourcen löschen, um unerwartete AWS-Kosten zu vermeiden:
+Wenn du mit dem Experiment fertig bist, solltest du die erstellten Ressourcen löschen, um dein Kontingent in der Sandbox-Umgebung nicht unnötig zu belasten:
 
 ```bash
 terraform destroy
 ```
 
-Terraform zeigt die Ressourcen an, die gelöscht werden, und fragt nach einer Bestätigung. Gib `yes` ein, um fortzufahren.
+Terraform zeigt die Ressourcen an, die gelöscht werden sollen, und fragt nach einer Bestätigung. Gib `yes` ein, um fortzufahren.
 
-Nach Abschluss werden alle von Terraform erstellten Ressourcen gelöscht.
+**Hinweis für Sandbox-Umgebungen**: In vielen AWS-Sandbox-Umgebungen werden Ressourcen automatisch gelöscht, wenn die Sitzung beendet wird oder nach Ablauf eines vordefinierten Zeitraums. Es ist dennoch eine gute Praxis, `terraform destroy` auszuführen, um deine Ressourcen sauber zu entfernen und um innerhalb der Kontingentgrenzen deiner Sandbox zu bleiben.
 
-## 8. Nächste Schritte
+## 8. CloudShell-Tipps
 
-Jetzt, da du die Grundlagen der Arbeit mit Terraform und AWS kennst, könntest du:
+### Persistenter Speicher
+Deine Dateien in der CloudShell werden im 1GB großen persistenten Speicher ($HOME) gespeichert und bleiben auch nach dem Schließen erhalten.
 
-1. **Komplexere Infrastrukturen erstellen**: Füge weitere Ressourcen wie S3-Buckets, RDS-Datenbanken oder Elastic Load Balancer hinzu
+### Dateien hochladen/herunterladen
+Du kannst Dateien in die CloudShell hochladen oder aus ihr herunterladen:
+1. Klicke auf "Actions" in der CloudShell
+2. Wähle "Upload file" oder "Download file"
 
-2. **Terraform-Module verwenden**: Erstelle wiederverwendbare Module für häufig verwendete Ressourcengruppen
+### Inaktivitäts-Timeout
+Die CloudShell-Sitzung wird nach 20-30 Minuten Inaktivität automatisch beendet. Speichere deine Arbeit regelmäßig.
 
-3. **Remote State konfigurieren**: Richte einen S3-Bucket für den Remote State ein, um die Zusammenarbeit im Team zu erleichtern
-
-4. **CI/CD-Integration**: Integriere Terraform in deine CI/CD-Pipeline, um Infrastructure-as-Code-Praktiken zu automatisieren
-
-5. **Terraform Cloud erkunden**: Untersuche Terraform Cloud für eine verbesserte Zusammenarbeit und Workflow-Management
+### Text kopieren/einfügen
+- **Kopieren**: Text in der CloudShell markieren und Ctrl+C oder Cmd+C drücken
+- **Einfügen**: Ctrl+V, Cmd+V oder Rechtsklick verwenden
 
 ## Fehlerbehebung
 
-### "Error: No valid credential sources found"
+### "Error: Unable to find AMI"
 
-Falls du diese Fehlermeldung siehst:
-1. Überprüfe, ob du `aws configure` ausgeführt hast
-2. Stelle sicher, dass deine Zugangsdaten korrekt sind
-3. Überprüfe, ob die AWS-Region in deiner Konfiguration korrekt ist
+Falls das AMI nicht gefunden wird:
+1. Überprüfe die Region in der AWS-Konsole (oben rechts)
+2. Verwende die alternative AMI-Konfiguration in main.tf (Amazon Linux 2 statt Amazon Linux 2023)
 
 ### "Error: Error creating security group"
 
-Möglicherweise existiert die Security Group bereits:
-1. Ändere den Namen der Security Group in der `main.tf`-Datei
-2. Oder lösche die bestehende Security Group über die AWS-Konsole
+Möglicherweise gibt es Probleme mit der Security Group:
+1. Überprüfe, ob dein Sandbox-Benutzer Berechtigungen zur Erstellung von Security Groups hat
+2. Die Konfiguration fügt bereits einen Zeitstempel hinzu, um eindeutige Namen zu generieren
 
-### Webseite ist nicht erreichbar
+### "Error: Error launching source instance"
 
-Wenn die Webseite nach einigen Minuten nicht erreichbar ist:
-1. Überprüfe, ob die EC2-Instance läuft (AWS-Konsole → EC2 → Instances)
-2. Überprüfe die Security Group-Regeln (AWS-Konsole → EC2 → Security Groups)
-3. SSH dich in die Instance ein (falls du einen SSH-Schlüssel konfiguriert hast) und überprüfe den Status des Webservers: `systemctl status httpd`
+In den Sandbox-Umgebungen gibt es manchmal Beschränkungen:
+1. Überprüfe, ob du das Kontingent für EC2-Instances erreicht hast
+2. Wechsle zu einem kleineren Instance-Typ in der variables.tf (z.B. von t2.micro zu t2.nano)
+3. Überprüfe in der AWS-Konsole, ob in deiner Region zusätzliche Einschränkungen bestehen
+
+### "Error: VPC not found" oder VPC-bezogene Fehler
+
+In Sandbox-Umgebungen könnte die VPC-Konfiguration anders sein:
+1. Öffne die AWS-Konsole und navigiere zum VPC-Service
+2. Notiere die ID der Default-VPC oder einer anderen verfügbaren VPC
+3. Füge diese VPC-ID explizit zu deiner EC2-Instance-Konfiguration in main.tf hinzu:
+   ```hcl
+   resource "aws_instance" "web" {
+     # ... andere Konfiguration
+     subnet_id = "subnet-xxxxxxxx"  # Eine Subnet-ID aus deiner VPC
+   }
+   ```
 
 ## Zusammenfassung
 
-In diesem praktischen Tutorial hast du gelernt, wie du:
-- Terraform mit deinem AWS-Account verbindest
+In diesem Tutorial hast du gelernt, wie du:
+- Die AWS CloudShell für Terraform-Projekte nutzt
+- Terraform in der CloudShell installierst
 - Eine einfache Infrastruktur mit Terraform Code definierst
 - Den Terraform-Workflow (init, plan, apply, destroy) ausführst
-- Eine einfache Webanwendung auf AWS bereitstellst
+- Eine "Hello World"-Webanwendung auf AWS bereitstellst
 
-Diese Grundlagen bilden das Fundament für komplexere Infrastructure-as-Code-Projekte und ermöglichen dir, deine AWS-Infrastruktur effizient zu verwalten und zu automatisieren.
+Die Verwendung der CloudShell vereinfacht den Einstieg in Terraform erheblich, da du keine lokale Installation benötigst und die AWS-Authentifizierung automatisch eingerichtet ist. Dieser Ansatz ist besonders nützlich in verwalteten AWS-Sandbox-Umgebungen.
