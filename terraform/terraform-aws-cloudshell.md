@@ -370,4 +370,4 @@ In echten Projekten würdest du:
    - Konfigurationen anpassbar gestalten
    - Wichtige Informationen als Outputs bereitstellen
 
-Für heute hast du aber schon einen wichtigen ersten Schritt gemacht: Du hast erfolgreich Infrastruktur als Code mit Terraform erstellt!
+Für heute hast du aber schon einen wichtigen ersten Schritt gemacht: Du hast erfolgreich Infrastruktur als Code mit Terraform erstellt! Melde dich bei mir auf Slack und schreibe die Nachricht "Moin, ich habe die Aufgabe zu Ende gelesen".
