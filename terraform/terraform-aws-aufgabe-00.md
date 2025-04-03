@@ -335,6 +335,10 @@ output "bucket_region" {
     ```
     terraform destroy
     ```
+12. Wenn du bis hierhin gelesen hast und die Übung erfolgreich durchgeführt hast, dann schreib mir den folgenden Code als Direktnachricht auf Slack ;)
+    ```
+    X34t5
+    ```
 
 **Warum ist dieser Ansatz wichtig?**
 
@@ -363,4 +367,4 @@ Diese Übung führt dich in die Erstellung von echten Cloud-Ressourcen mit Terra
 - **Aufräumen:**
   - Der destroy-Befehl ist entscheidend, um unerwartete Kosten zu vermeiden, insbesondere bei Cloud-Diensten, die kontinuierlich Gebühren verursachen können.
 
-Dieser Ansatz zeigt, wie du mit Terraform Cloud-Ressourcen nicht nur erstellen, sondern auch entsprechend aktueller Best Practices für Sicherheit und Betrieb konfigurieren kannst. Wenn du bis hier gelesen hast und die Übung erfolgreich durchgeführt hast, dann schreibe mir den folgenden Code einmal auf Slack als Direktnachricht "X34t5" ;)
+Dieser Ansatz zeigt, wie du mit Terraform Cloud-Ressourcen nicht nur erstellen, sondern auch entsprechend aktueller Best Practices für Sicherheit und Betrieb konfigurieren kannst.
