@@ -2,6 +2,8 @@
 
 Dieses Tutorial führt dich in die Grundlagen von Terraform mit AWS ein. Du lernst, wie du deine Cloud-Infrastruktur als Code definieren, verwalten und automatisieren kannst - ein unerlässlicher Skill für moderne DevOps-Praktiken.
 
+Schaut auch gerne in die Doku: https://developer.hashicorp.com/terraform/docs
+
 ## Inhaltsverzeichnis
 - [1. Einführung in Terraform](#1-einführung-in-terraform)
   - [1.1 Was ist Infrastructure as Code (IaC)?](#11-was-ist-infrastructure-as-code-iac)
