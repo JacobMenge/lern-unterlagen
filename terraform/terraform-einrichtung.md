@@ -33,7 +33,7 @@ Für die Arbeit mit AWS benötigt Terraform Zugangsdaten. Wir werden einen progr
 
 ### 2.1 IAM-Benutzer erstellen
 
-1. Melde dich in der [AWS Management Console](https://console.aws.amazon.com/) an
+1. Melde dich in der https://techstarter-sandboxes.awsapps.com/start/ an
 
 2. Suche nach "IAM" und klicke auf den IAM-Service
 
