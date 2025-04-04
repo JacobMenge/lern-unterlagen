@@ -286,6 +286,12 @@ Diese Befehle sind unverzichtbare Werkzeuge im Umgang mit komplexeren Terraform-
    # hier erstellen wir den s3 bucket für unseren state
    resource "aws_s3_bucket" "terraform_state" {
      bucket = "terraform-state-${random_id.suffix.hex}"
+   
+     # === Wichtige Zeile ===
+     # Wenn auf 'true' gesetzt, versucht Terraform beim 'destroy',
+     # zuerst alle Objekte im Bucket zu löschen, bevor der Bucket selbst gelöscht wird.
+     # ACHTUNG: Führt zum unwiderruflichen Verlust aller Daten im Bucket beim Destroy!
+     force_destroy = true
    }
 
    # wir sollten immer versionierung aktivieren
