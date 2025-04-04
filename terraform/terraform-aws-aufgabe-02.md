@@ -218,6 +218,9 @@ resource "local_file" "umgebungs_datei" {
    - Tippe `terraform workspace new entwicklung`
    - Und dann `terraform workspace new produktion`
 
+  > **Hinweis:** `terraform workspace show` Dieser Befehl gibt einfach den Namen des Workspaces aus, in dem du dich gerade befindest (z.B. default, staging, production).
+
+
 3. Wechsle zwischen den Umgebungen und sieh, was passiert:
    - `terraform workspace select entwicklung`
    - `terraform apply`
