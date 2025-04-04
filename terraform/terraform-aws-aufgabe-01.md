@@ -411,12 +411,8 @@ Diese Befehle sind unverzichtbare Werkzeuge im Umgang mit komplexeren Terraform-
 
    > **Beobachtung:** Terraform fragt, ob der State migriert werden soll. Bei einem neuen Projekt ist das nicht relevant, aber bei bestehenden Projekten wird so der lokale State in den Remote State übertragen.
 
-8. Wende die Konfiguration an:
-   ```
-   terraform apply
-   ```
 
-9. Wende die Konfiguration an:
+8. Wende die Konfiguration an:
    ```
    terraform apply
    ```
@@ -427,7 +423,7 @@ Diese Befehle sind unverzichtbare Werkzeuge im Umgang mit komplexeren Terraform-
    aws s3 ls s3://DEIN-BUCKET-NAME/
    ```
 
-10. Der entscheidende Test - State-Locking demonstrieren:
+9. Der entscheidende Test - State-Locking demonstrieren:
    
     a) Starte in einem Terminal einen `terraform apply` Befehl, aber breche ihn noch nicht ab:
       ```
@@ -441,7 +437,7 @@ Diese Befehle sind unverzichtbare Werkzeuge im Umgang mit komplexeren Terraform-
       
    > **Beobachtung:** Der zweite Befehl wartet oder schlägt fehl, da der State durch den ersten Befehl gesperrt ist. Dies ist der DynamoDB-Lock in Aktion und verhindert Konflikte bei Teamarbeit!
 
-11. Schließe die laufenden Terraform-Prozesse und räume auf:
+10. Schließe die laufenden Terraform-Prozesse und räume auf:
     ```
     terraform destroy
     ```
