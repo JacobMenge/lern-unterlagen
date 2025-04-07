@@ -82,7 +82,7 @@ Erstelle die Datei `modules/webserver/main.tf`:
 ```hcl
 resource "aws_security_group" "web" {
   name        = "web-sg-${var.environment}"
-  description = "Security Group für Webserver (${var.environment})"
+  description = "(${var.environment})"
   vpc_id      = var.vpc_id
 
   # SSH zugriff
