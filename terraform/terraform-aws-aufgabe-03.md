@@ -449,16 +449,4 @@ Hier sind einige weiterführende Konzepte, die du nach dieser Grundübung erkund
 > - Verwendung einer Sandbox-AWS-Organisation mit Kostenlimits
 > - Automatisches Abschalten von Ressourcen außerhalb der Arbeitszeiten
 
-## Fazit
-
-In dieser Übung hast du die Grundlagen von Terraform-Modulen kennengelernt. Du weißt jetzt, wie du:
-
-1. Ein wiederverwendbares Modul erstellst
-2. Input-Variablen und Output-Werte definierst
-3. Dasselbe Modul für verschiedene Umgebungen nutzt
-4. Ein bestehendes Modul erweiterst
-5. Ressourcen verantwortungsvoll erstellst und wieder löschst
-
-Module sind ein wichtiger Baustein für skalierbare, wartbare Infrastruktur als Code. Mit diesem Grundwissen kannst du nun komplexere Infrastrukturen auf eine strukturierte Weise entwickeln.
-
 Falls du Fragen zur Übung hast oder Hilfe benötigst, melde dich gerne per Slack bei mir!
