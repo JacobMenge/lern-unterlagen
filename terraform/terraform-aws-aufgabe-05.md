@@ -28,7 +28,7 @@ Wie würdet ihr das mit **Terraform** umsetzen?
 3. Überlegt zunächst selbst – ganz ohne Google.  
    Danach dürft ihr natürlich **recherchieren, KI nutzen oder euch austauschen**, um euer Konzept weiterzuentwickeln.
 
-> **Hinweis**: Es geht **nicht darum, den perfekten Terraform-Code zu schreiben**, sondern erstmal darum, zu **verstehen**, wie man die eigene Idee in Infrastruktur-as-Code überträgt. Hier finddet ihr weitere Hinweise, welche euch helfen könnten: 
+> **Hinweis**: Es geht **nicht darum, den perfekten Terraform-Code zu schreiben**, sondern erstmal darum, zu **verstehen**, wie man die eigene Idee in Infrastruktur-as-Code überträgt. Hier finddet ihr weitere Hinweise, welche euch helfen könnten: https://github.com/JacobMenge/lern-unterlagen/blob/main/terraform/terraform-aws-hinweise-05.md
 
 
 ---
