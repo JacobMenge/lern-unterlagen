@@ -1,4 +1,4 @@
-# Aufgabe: Günstige Web-App-Architektur in AWS + wie ihr sie mit Terraform aufbaut
+# Aufgabe 1: Günstige Web-App-Architektur in AWS + wie ihr sie mit Terraform aufbaut
 
 Ihr sollt eine einfache Webanwendung in AWS realisieren – mit **Frontend**, **Backend** und **Datenbank**.  
 Das Ziel: Eine **möglichst kostengünstige** Lösung, die trotzdem funktioniert, skalierbar ist und auch für kleinere reale Projekte taugt.
@@ -37,6 +37,28 @@ Wie würdet ihr das mit **Terraform** umsetzen?
 Vielleicht überrascht euch, wie unterschiedlich (und kreativ) man so eine Aufgabe lösen kann.
 
 ---
+
+
+# Aufgabe 2: Web-App mit AWS – aber skalierbar!
+
+Stellt euch vor, eure Webanwendung läuft stabil – aber plötzlich **steigt die Nutzerzahl stark an**.  
+Euer Ziel: Die Anwendung soll **weiterhin performant bleiben**, **automatisch mitwachsen** – und das **ohne große Zusatzkosten**.
+
+**Wie würdet ihr eure bestehende Architektur anpassen, um besser zu skalieren, ohne dass die Kosten explodieren?**
+
+---
+
+## Eure Aufgabe:
+
+1. Überlegt, **welche Komponenten** (Frontend, Backend, Datenbank etc.) durch mehr Nutzer:innen am meisten belastet würden.
+2. Denkt darüber nach, **welche Architekturentscheidungen** helfen könnten, Lastspitzen besser abzufangen.
+3. Welche Services oder Konzepte aus der AWS-Welt könnten euch dabei helfen?
+4. Skizziert oder beschreibt eure Idee kurz (Diagramm, Liste oder ein paar erklärende Sätze reichen).
+
+> Tipp: Ihr müsst keine komplett neue Architektur erfinden – es geht darum, gezielt über **Skalierbarkeit bei kleinem Budget** nachzudenken.
+
+---
+
 
 📥 **Optional:**  
 Wenn ihr mögt, könnt ihr eure Lösung auch gerne im **Classroom unter dieser Aufgabe einreichen** – das ist aber **kein Muss**.  
