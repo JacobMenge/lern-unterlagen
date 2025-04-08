@@ -33,7 +33,7 @@ Wie würdet ihr das mit **Terraform** umsetzen?
 
 ---
 
-💬 Wenn ihr Lust habt, könnt ihr eure Ideen am Ende im Plenum vorstellen oder in kleinen Gruppen vergleichen.  
+💬 Wenn ihr Lust habt, könnt ihr eure Ideen am Ende (12:00) im Plenum vorstellen oder in kleinen Gruppen vergleichen.  
 Vielleicht überrascht euch, wie unterschiedlich (und kreativ) man so eine Aufgabe lösen kann.
 
 ---
