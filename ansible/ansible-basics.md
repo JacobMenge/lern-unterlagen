@@ -35,6 +35,7 @@ Der große Vorteil: Was einmal definiert ist, kannst du:
 - **Versionieren** (mit Git oder ähnlichen Tools)
 - **Konsistent halten** über alle Umgebungen hinweg
 - **Testen** vor dem Ausrollen in Produktion
+- **Kommunikation mit Expertensystemen** z.B. Claude, Gemini oder ChatGPT
 
 Configuration Management verhindert das berüchtigte "Aber bei mir funktioniert es doch!"-Problem, indem es sicherstellt, dass alle Systeme gleich konfiguriert sind und Änderungen nachvollziehbar dokumentiert werden.
 
