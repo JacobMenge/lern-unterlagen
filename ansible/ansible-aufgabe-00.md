@@ -232,34 +232,39 @@ nano hello-world.yml
 
 Erweitere es mit folgendem Inhalt:
 
+(Mit kommentaren)
 ```yaml
 ---
-- name: Hello World Playbook
-  hosts: local
-  vars:
-    greeting: "Hello, Ansible World!"
-    current_time: "{{ ansible_date_time.iso8601 }}"
+# Dies ist der Beginn eines Ansible-Playbooks, markiert durch drei Bindestriche
+
+# Definition des Playbooks mit Namen und Zielumgebung
+- name: Hello World Playbook    # Name des Playbooks
+  hosts: local                  # Zielumgebung: lokaler Computer
+  vars:                         # Definition von Variablen
+    greeting: "Hello, Ansible World!"    # Begrüßungstext als Variable
+    current_time: "{{ ansible_date_time.iso8601 }}"  # Aktuelle Zeit aus Ansible-Fakten
   
-  tasks:
-    - name: Echo Hello World
-      command: echo "{{ greeting }}"
-      register: hello_output
+  tasks:    # Hier beginnt die Liste der auszuführenden Aufgaben
+    - name: Echo Hello World    # Name der ersten Aufgabe
+      command: echo "{{ greeting }}"    # System-Befehl, der ausgeführt wird
+      register: hello_output    # Speichert die Ausgabe in einer Variable namens hello_output
     
-    - name: Zeige die Ausgabe an
-      debug:
-        var: hello_output.stdout
+    - name: Zeige die Ausgabe an    # Name der zweiten Aufgabe
+      debug:                        # Debug-Modul zur Ausgabe von Informationen
+        var: hello_output.stdout    # Zeigt den stdout-Teil der gespeicherten Ausgabe an
     
-    - name: Zeige aktuelle Zeit an
-      debug:
-        msg: "Die aktuelle Zeit ist {{ current_time }}"
+    - name: Zeige aktuelle Zeit an    # Name der dritten Aufgabe
+      debug:                          # Weiterer Debug-Aufruf
+        msg: "Die aktuelle Zeit ist {{ current_time }}"  # Formatierte Nachricht mit Zeitvariable
     
-    - name: Erstelle eine Hello-World-Datei
-      copy:
-        content: |
+    - name: Erstelle eine Hello-World-Datei    # Name der vierten Aufgabe
+      copy:                                     # Kopier-Modul zum Erstellen von Dateien
+        content: |                              # Mehrzeiliger Inhalt für die Datei
           {{ greeting }}
           Diese Datei wurde mit Ansible erstellt am {{ current_time }}.
-        dest: ~/hello-ansible.txt
-        mode: '0644'
+        dest: ~/hello-ansible.txt               # Zielort: Datei im Home-Verzeichnis
+        mode: '0644'                            # Dateiberechtigungen (lesbar für alle, schreibbar für Besitzer)
+
 ```
 
 Speichere und führe das Playbook erneut aus:
