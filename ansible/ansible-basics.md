@@ -60,17 +60,20 @@ Configuration Management verhindert das berüchtigte "Aber bei mir funktioniert 
 Hier ein einfaches Beispiel, wie Ansible-Code aussieht:
 
 ```yaml
----
 - name: Webserver installieren und konfigurieren
   hosts: webservers
-  become: yes
+  become: yes  # führt alle tasks mit root-rechten aus
   
   tasks:
+    # installiert die neueste apache-version auf dem system
+    # führt automatisch apt update vor der installation aus
     - name: Neueste Version von Apache installieren
       apt:
         name: apache2
         state: latest
     
+    # stellt sicher dass apache läuft und beim systemstart automatisch startet
+    # wichtig für die zuverlässigkeit des servers
     - name: Apache-Dienst starten und aktivieren
       service:
         name: apache2
@@ -125,7 +128,7 @@ Um Ansible effektiv zu nutzen, solltest du diese vier Kernkonzepte verstehen:
 
 **1. Inventories**
 
-Inventories definieren, welche Hosts Ansible verwalten soll. Sie können statisch (als Datei) oder dynamisch (aus Cloud-Providern, CMDB, etc. generiert) sein.
+Inventories definieren, welche Hosts Ansible verwalten soll. Sie können statisch (als Datei) oder dynamisch (aus Cloud-Providern, etc. generiert) sein.
 
 Beispiel für ein einfaches Inventory:
 
