@@ -417,14 +417,7 @@ Hier sind einige häufige Probleme und ihre Lösungen:
 - **"Role not found"**: Prüfe mit `pwd`, ob du im richtigen Verzeichnis bist, und stelle sicher, dass das Rollenverzeichnis korrekt angelegt wurde
 - **Permission denied**: Überprüfe die Dateiberechtigungen mit `ls -la`
 
-### 7.2 Nächste Schritte
 
-Diese Grundlagen bilden das Fundament für komplexere Automatisierungsaufgaben mit Ansible. Als nächstes könntest du:
-- Mehrere Server verwalten (siehe Abschnitt 2.3 "Inventory-Management" in den [Unterlagen](https://github.com/JacobMenge/lern-unterlagen/blob/main/ansible/ansible-basics.md))
-- Komplexere Rollen entwickeln (Abschnitt 2.4 "Ansible-Rollen")
-- Templates mit Jinja2 verwenden (Abschnitt 3.2 "Templates mit Jinja2")
-- Bedingte Ausführung (when-Klauseln) einsetzen
-- Mit Ansible Vault sensible Daten schützen
 
 > **Tipp:** Um tiefer in die Ansible-Konzepte einzusteigen, arbeite die vollständigen [Unterlagen](https://github.com/JacobMenge/lern-unterlagen/blob/main/ansible/ansible-basics.md) durch. Sie enthalten zahlreiche Beispiele und detaillierte Erklärungen zu allen wichtigen Ansible-Funktionen.
 
