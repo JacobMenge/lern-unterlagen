@@ -25,7 +25,7 @@ Schaut auch gerne in die Doku: https://docs.ansible.com/
 
 ### 1.1 Was ist Configuration Management?
 
-Stell dir vor, du müsstest jeden Server manuell einrichten, jede Software installieren und konfigurieren, und das bei jeder Änderung oder für jeden neuen Server wiederholen. Klingt nach einem Albtraum, oder? Genau hier kommt Configuration Management ins Spiel.
+Stell dir vor, du müsstest jeden Server manuell einrichten, jede Software installieren und konfigurieren und das bei jeder Änderung oder für jeden neuen Server wiederholen. Klingt nach einem Albtraum, oder? Genau hier kommt Configuration Management ins Spiel.
 
 **Configuration Management** bedeutet, dass du den Zustand deiner IT-Systeme automatisiert definierst, anwendest und überwachst. Statt manuelle Befehle auszuführen oder Konfigurationsdateien von Hand zu ändern, definierst du den gewünschten Zustand deiner Systeme in maschinenlesbaren Dateien.
 
@@ -77,7 +77,7 @@ Hier ein einfaches Beispiel, wie Ansible-Code aussieht:
         enabled: yes
 ```
 
-Dieser Code sorgt dafür, dass auf allen Servern in der Gruppe "webservers" Apache installiert, gestartet und so konfiguriert ist, dass er beim Systemstart automatisch startet. Die Stärke liegt darin, dass Ansible dieses Playbook gegen hunderte Server gleichzeitig ausführen kann, und es wird immer den gleichen Zustand herstellen.
+Dieser Code sorgt dafür, dass auf allen Servern in der Gruppe "webservers" Apache installiert, gestartet und so konfiguriert ist, dass er beim Systemstart automatisch startet. Die Stärke liegt darin, dass Ansible dieses Playbook gegen hunderte Server gleichzeitig ausführen kann und es wird immer den gleichen Zustand herstellen.
 
 ### 1.3 Ansible vs. andere Configuration Management Tools
 
