@@ -4,6 +4,8 @@ Diese Übung baut auf deinen neu erworbenen Ansible-Grundlagen aus der "Hello Wo
 
 > **Hinweis:** Für diese Übung solltest du bereits die Ansible "Hello World"-Übung abgeschlossen haben und mit den Grundlagen von Ansible vertraut sein. Zusätzliches Hintergrundwissen findest du in den [Ansible-Unterlagen](https://github.com/JacobMenge/lern-unterlagen/blob/main/ansible/ansible-basics.md).
 
+
+
 ## Was du in dieser Übung lernen wirst
 
 In dieser Übung wirst du:
@@ -431,6 +433,23 @@ Unser Playbook definiert eine strukturierte Ausführung in drei Abschnitten:
 Diese Strukturierung hilft dabei, Playbooks übersichtlich und logisch aufzubauen, besonders wenn sie komplexer werden.
 
 ## 5. Führe das Playbook aus
+
+> **Hinweis:**  
+> Beim Ausführen von Ansible-Playbooks, die `sudo`-Rechte benötigen, kann folgender Fehler auftreten:
+>
+> ```
+> fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "sudo: a password is required\n", ...}
+> ```
+>
+> Dieser Fehler tritt auf, wenn vorab kein `sudo` verwendet wurde und Ansible daher keine Berechtigung hat.  
+> Um das zu vermeiden, sollte das Playbook mit dem Parameter `--ask-become-pass` ausgeführt werden:
+>
+> ```bash
+> ansible-playbook playbook.yml --ask-become-pass
+> ```
+>
+> Dadurch wird beim Start des Playbooks nach dem Passwort für `sudo` gefragt.
+
 
 Jetzt können wir das Playbook ausführen:
 
