@@ -144,7 +144,7 @@ mkdir -p files/apt
 Erstelle die Repositorydatei für Debian/Ubuntu:
 
 ```bash
-nano files/apt/mongodb-org-6.0.list
+nano files/apt/mongodb-org-7.0.list
 ```
 
 Füge folgenden Inhalt hinzu:
