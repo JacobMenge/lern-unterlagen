@@ -451,16 +451,6 @@ nano ansible/playbooks/setup_nginx.yml
         update_cache: yes
       changed_when: false
 
-    - name: Installiere EPEL-Repository
-      dnf:
-        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-        state: present
-        disable_gpg_check: yes
-      register: epel_result
-      until: epel_result is succeeded
-      retries: 3
-      delay: 5
-      ignore_errors: yes
       
     - name: Alternative Methode - Aktiviere Amazon Extras (falls vorhanden)
       shell: amazon-linux-extras enable nginx1
