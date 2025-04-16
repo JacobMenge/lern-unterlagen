@@ -308,7 +308,7 @@ nano terraform/terraform.tfvars
 
 ```hcl
 key_name         = "mein-aws-schluessel"  # Name deines AWS-Schlüsselpaars
-private_key_path = "~/.ssh/mein-aws-schluessel.pem"  # Pfad zu deinem privaten Schlüssel
+private_key_path = "~/.ssh/terraform-ansible-demo.pem"  # Pfad zu deinem privaten Schlüssel! ändere ihn, falls er bei dir wo andedrs liegt oder anders heißt
 ```
 
 **Wichtig:** 
