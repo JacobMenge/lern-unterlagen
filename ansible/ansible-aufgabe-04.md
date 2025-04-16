@@ -58,7 +58,22 @@ Bevor du mit dieser Übung beginnst, stelle sicher, dass folgende Tools installi
 - Terraform (Version 0.14 oder höher)
 - Ansible (Version 2.12 oder höher)
 - AWS CLI (konfiguriert mit entsprechenden Berechtigungen)
-- Ein SSH-Schlüsselpaar in AWS
+- Ein SSH-Schlüsselpaar in AWS --> https://github.com/JacobMenge/lern-unterlagen/blob/main/aws-ssh-key-einrichten.md
+  > **Hinweis für WSL-Nutzer**: 
+  > 
+  > Der in dieser Übung angegebene SSH-Schlüsselpfad (`~/.ssh/mein-aws-schluessel.pem`) muss an deine spezifische Umgebung angepasst werden:
+  > 
+  > - **Bei Schlüsseln im WSL-Dateisystem**: Der Pfad könnte wie im Beispiel `~/.ssh/mein-schluessel.pem` bleiben
+  > 
+  > - **Bei Schlüsseln im Windows-Dateisystem**: Der Pfad muss auf das Windows-Laufwerk verweisen, z.B.:
+  >   ```
+  >   private_key_path = "/mnt/c/Users/DeinWindowsNutzer/.ssh/mein-schluessel.pem"
+  >   ```
+  >
+  > Stelle sicher, dass die Berechtigungen für den Schlüssel korrekt gesetzt sind. In WSL kannst du dies mit folgendem Befehl tun:
+  > ```bash
+  > chmod 600 /pfad/zu/deinem/schluessel.pem
+  > ```
 
 Du kannst die installierten Versionen mit folgenden Befehlen überprüfen:
 
