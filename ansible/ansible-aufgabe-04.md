@@ -150,6 +150,7 @@ Die Verwendung eines Data Source für die AMI-Auswahl bietet entscheidende Vorte
 
 In Produktionsumgebungen könntest du zusätzlich nach bestimmten AMI-Tags oder Versionsnummern filtern, um noch mehr Kontrolle über die verwendeten Images zu haben.
 
+```hcl
 # Ressource: EC2-Instanz
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.amazon_linux_2023.id
@@ -281,9 +282,6 @@ Der `ansible_inventory`-Output ist der entscheidende Verbindungspunkt zwischen b
 - Dieser Ansatz skaliert hervorragend: Ob 1 oder 100 Server - das Prinzip bleibt gleich
 
 In größeren Umgebungen würde dieses Inventory noch mehr Details enthalten: verschiedene Host-Gruppen (z.B. webserver, database), zusätzliche Verbindungsvariablen oder auch gruppenspezifische Ansible-Variablen. Die Grundstruktur bleibt jedoch immer gleich, was die Integration vorhersehbar und wartbar macht.
-```
-
-Der `ansible_inventory`-Output ist besonders wichtig, da er die Verbindungsinformationen in einem Format bereitstellt, das direkt von Ansible verwendet werden kann.
 
 ### 2.4 Terraform-Variablenwerte festlegen
 
@@ -654,13 +652,6 @@ Mache das Skript ausführbar:
 ```bash
 chmod +x deploy.sh
 ```
-
-Dieses Skript orchestriert den gesamten Workflow:
-1. Terraform-Bereitstellung der Infrastruktur
-2. Warten auf SSH-Verfügbarkeit mit robustem Timeout und Retry-Mechanismus
-3. Generierung des Ansible-Inventorys aus Terraform-Outputs
-4. Ausführung des Ansible-Playbooks für die Konfiguration
-5. Ausgabe der Zugriffsinformationen
 
 ## 5. Führe den End-to-End-Workflow aus
 
