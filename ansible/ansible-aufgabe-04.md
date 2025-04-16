@@ -150,6 +150,8 @@ Die Verwendung eines Data Source für die AMI-Auswahl bietet entscheidende Vorte
 
 In Produktionsumgebungen könntest du zusätzlich nach bestimmten AMI-Tags oder Versionsnummern filtern, um noch mehr Kontrolle über die verwendeten Images zu haben.
 
+Füge auch diesen code hier noch in die main.tf hinzu:
+
 ```hcl
 # Ressource: EC2-Instanz
 resource "aws_instance" "web_server" {
