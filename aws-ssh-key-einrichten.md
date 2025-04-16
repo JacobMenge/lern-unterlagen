@@ -56,21 +56,7 @@ Für die AWS-Verbindung in dieser Übung wird ein SSH-Schlüsselpaar benötigt. 
    chmod 600 /mnt/c/Users/DeinWindowsNutzer/Downloads/terraform-ansible-demo.pem
    ```
 
-## C. Konfiguration in der terraform.tfvars-Datei
-
-Nachdem du den Schlüssel erstellt und gespeichert hast, aktualisiere deine `terraform.tfvars`-Datei mit dem korrekten Schlüsselnamen und -pfad:
-
-```hcl
-# Für Linux/macOS oder WSL Option 1
-key_name         = "terraform-ansible-demo"  # Name des Schlüssels in AWS
-private_key_path = "~/.ssh/terraform-ansible-demo.pem"  # Pfad zur Schlüsseldatei
-
-# Für WSL Option 2 (Schlüssel im Windows-Dateisystem)
-# key_name         = "terraform-ansible-demo"
-# private_key_path = "/mnt/c/Users/DeinWindowsNutzer/Downloads/terraform-ansible-demo.pem"
-```
-
-## D. Überprüfung der SSH-Konfiguration
+## c. Überprüfung der SSH-Konfiguration
 
 Vergewissere dich, dass:
 1. Der Schlüsselname in `key_name` exakt mit dem Namen des in AWS erstellten Schlüssels übereinstimmt
