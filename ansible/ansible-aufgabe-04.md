@@ -364,6 +364,9 @@ host_key_checking = False
 inventory = ./inventory.json
 interpreter_python = auto_silent
 deprecation_warnings = False  # Unterdrücke Warnungen zu veralteten Features
+
+[ssh_connection]
+timeout = 30  # Erhöhe Timeout für langsame Verbindungen
 ```
 
 Diese Konfiguration optimiert Ansible für die Verwendung mit temporären Cloud-Instanzen und verbessert die Stabilität der Verbindungen.
