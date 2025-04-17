@@ -13,13 +13,19 @@ Für die AWS-Verbindung in dieser Übung wird ein SSH-Schlüsselpaar benötigt. 
    - Wähle "EC2" aus
 
 3. **Erstelle ein neues Schlüsselpaar**:
+   - Stelle deine Region auf "eu-central-1"
    - Klicke im linken Menü auf "Schlüsselpaare" (unter "Netzwerk & Sicherheit")
    - Klicke auf "Schlüsselpaar erstellen"
    - Gib einen Namen für dein Schlüsselpaar ein (z.B. "terraform-ansible-demo")
    - Wähle als Schlüsselpaartyp "RSA"
-   - Wähle als Dateiformat ".pem" für Linux/macOS/WSL oder ".ppk" für PuTTY (Windows)
+   - Wähle als Dateiformat ".pem" für Linux/macOS/WSL
+     ![rsa schlüssel](https://github.com/user-attachments/assets/43e1c3b5-95b8-4583-b81e-0d0c95476e92)
    - Klicke auf "Erstellen"
    - Die private Schlüsseldatei wird automatisch heruntergeladen - bewahre sie sicher auf!
+
+
+
+
 
 ## B. Speichern des Schlüssels in der richtigen Umgebung
 
