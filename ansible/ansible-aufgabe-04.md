@@ -44,6 +44,11 @@ Bevor wir mit der praktischen Umsetzung beginnen, ist es wichtig zu verstehen, w
    - Es behandelt Fehler und stellt sicher, dass jeder Schritt erfolgreich abgeschlossen wird
    - Es zeigt am Ende die URL an, unter der der Webserver erreichbar ist
 
+## Visueller Workflow-Überblick
+
+![Terraform-Ansible-Integrationsworkflow](https://github.com/user-attachments/assets/ad4fd181-67f2-4178-ab50-b8330032de8d)
+*Abbildung: Visueller Überblick des Terraform-Ansible-Workflows (erstellt von Marcel Ebel, Kurs 24-06)*
+
 Dieser Workflow zeigt die perfekte Ergänzung von Terraform und Ansible:
 - **Terraform** kümmert sich um die Infrastruktur (WAS bereitgestellt wird)
 - **Ansible** kümmert sich um die Konfiguration (WIE es konfiguriert wird)
