@@ -145,7 +145,7 @@ data "aws_ami" "amazon_linux_2023" {
 
   filter {
     name   = "name"
-    values = ["al2023-ami-*-kernel-6.1-x86_64"]
+    values = ["al2023-ami-*-x86_64"]
   }
 
   filter {
@@ -153,21 +153,7 @@ data "aws_ami" "amazon_linux_2023" {
     values = ["hvm"]
   }
 }
-```
 
-**Warum ein AMI Data Source statt einer festen AMI-ID?**
-
-Die Verwendung eines Data Source für die AMI-Auswahl bietet entscheidende Vorteile:
-- **Automatische Aktualisierung**: Deine Infrastruktur nutzt immer die neueste AMI-Version mit Sicherheitspatches
-- **Portabilität**: Dein Code funktioniert regionsübergreifend ohne Anpassungen
-- **Wartbarkeit**: Kein manuelles Nachschlagen und Aktualisieren von AMI-IDs mehr nötig
-- **Reproduzierbarkeit**: Eindeutige Filterkriterien statt kryptischer IDs machen deinen Code verständlicher
-
-In Produktionsumgebungen könntest du zusätzlich nach bestimmten AMI-Tags oder Versionsnummern filtern, um noch mehr Kontrolle über die verwendeten Images zu haben.
-
-Füge auch diesen code hier noch in die main.tf hinzu:
-
-```hcl
 # Ressource: EC2-Instanz
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.amazon_linux_2023.id
@@ -225,6 +211,17 @@ resource "aws_security_group" "web_sg" {
   }
 }
 ```
+
+**Warum ein AMI Data Source statt einer festen AMI-ID?**
+
+Die Verwendung eines Data Source für die AMI-Auswahl bietet entscheidende Vorteile:
+- **Automatische Aktualisierung**: Deine Infrastruktur nutzt immer die neueste AMI-Version mit Sicherheitspatches
+- **Portabilität**: Dein Code funktioniert regionsübergreifend ohne Anpassungen
+- **Wartbarkeit**: Kein manuelles Nachschlagen und Aktualisieren von AMI-IDs mehr nötig
+- **Reproduzierbarkeit**: Eindeutige Filterkriterien statt kryptischer IDs machen deinen Code verständlicher
+
+In Produktionsumgebungen könntest du zusätzlich nach bestimmten AMI-Tags oder Versionsnummern filtern, um noch mehr Kontrolle über die verwendeten Images zu haben.
+
 
 Die wichtigsten Aspekte dieser Konfiguration:
 
@@ -287,6 +284,11 @@ output "ansible_inventory" {
     }
   }
 }
+
+# Output für den privaten SSH-Schlüsselpfad
+output "private_key_path" {
+  value = var.private_key_path
+}
 ```
 
 **Die Brücke zwischen Terraform und Ansible verstehen**
@@ -308,7 +310,7 @@ nano terraform/terraform.tfvars
 
 ```hcl
 key_name         = "mein-aws-schluessel"  # Name deines AWS-Schlüsselpaars
-private_key_path = "~/.ssh/terraform-ansible-demo.pem"  # Pfad zu deinem privaten Schlüssel! ändere ihn, falls er bei dir wo andedrs liegt oder anders heißt
+private_key_path = "~/.ssh/terraform-ansible-demo.pem"  # Relativer Pfad mit ~ für Home-Verzeichnis
 ```
 
 **Wichtig:** 
@@ -374,6 +376,10 @@ if ! command -v jq &> /dev/null; then
     
     # Hole die IP-Adresse direkt
     SERVER_IP=$(terraform output -raw web_server_public_ip)
+    if [ $? -ne 0 ]; then
+      echo "Fehler beim Abrufen der Server-IP aus Terraform"
+      exit 1
+    fi
     
     # Erstelle ein einfaches JSON-Inventory manuell
     cat > ../ansible/inventory.json << EOF
@@ -399,7 +405,10 @@ fi
 cd ../terraform
 
 # Hole die Ausgabe des Ansible-Inventory und speichere sie als JSON
-terraform output -json ansible_inventory | jq > ../ansible/inventory.json
+if ! terraform output -json ansible_inventory | jq > ../ansible/inventory.json; then
+  echo "Fehler beim Abrufen des Terraform-Outputs"
+  exit 1
+fi
 
 echo "Ansible-Inventory wurde generiert aus Terraform-Output."
 ```
@@ -451,6 +460,12 @@ nano ansible/playbooks/setup_nginx.yml
         update_cache: yes
       changed_when: false
 
+    - name: Versuche EPEL zu installieren
+      dnf:
+        name: epel-release
+        state: present
+      register: epel_result
+      failed_when: false
       
     - name: Alternative Methode - Aktiviere Amazon Extras (falls vorhanden)
       shell: amazon-linux-extras enable nginx1
@@ -463,6 +478,7 @@ nano ansible/playbooks/setup_nginx.yml
       dnf:
         name: nginx
         state: present
+        update_cache: yes
 
     - name: Erstelle Webserver-Verzeichnis
       file:
@@ -611,7 +627,7 @@ echo -e "${BLUE}2. Warte auf vollständige SSH-Verfügbarkeit...${NC}"
 
 # Setze absolute Pfade für sicherere Ausführung
 SERVER_IP=$(cd "$(dirname "$0")/terraform" && terraform output -raw web_server_public_ip)
-SSH_KEY_PATH=$(cd "$(dirname "$0")/terraform" && terraform output -raw private_key_path | tr -d '"')
+SSH_KEY_PATH=$(cd "$(dirname "$0")/terraform" && terraform output -raw private_key_path)
 
 echo "Server IP: $SERVER_IP"
 echo "SSH Key: $SSH_KEY_PATH"
@@ -648,7 +664,7 @@ SERVER_IP=$(cd terraform && terraform output -raw web_server_public_ip)
 
 echo -e "${GREEN}=== Deployment erfolgreich abgeschlossen! ===${NC}"
 echo -e "Webserver erreichbar unter: http://${SERVER_IP}"
-echo -e "Zugriff per SSH: ssh -i ~/.ssh/dein-schluessel.pem ec2-user@${SERVER_IP}"
+echo -e "Zugriff per SSH: ssh -i ${SSH_KEY_PATH} ec2-user@${SERVER_IP}"
 echo -e "${YELLOW}HINWEIS: Vergiss nicht, die Ressourcen nach dem Test zu löschen:${NC}"
 echo -e "cd terraform && terraform destroy -auto-approve"
 ```
