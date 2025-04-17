@@ -398,8 +398,10 @@ if ! command -v jq &> /dev/null; then
     # Wechsle ins Terraform-Verzeichnis
     cd ../terraform
     
-    # Hole die IP-Adresse direkt
+    # Hole die IP-Adresse und den SSH-Schlüssel
     SERVER_IP=$(terraform output -raw web_server_public_ip)
+    SSH_KEY_PATH=$(terraform output -raw private_key_path)
+    
     if [ $? -ne 0 ]; then
       echo "Fehler beim Abrufen der Server-IP aus Terraform"
       exit 1
@@ -412,7 +414,8 @@ if ! command -v jq &> /dev/null; then
     "hosts": {
       "web": {
         "ansible_host": "$SERVER_IP",
-        "ansible_user": "ec2-user"
+        "ansible_user": "ec2-user",
+        "ansible_ssh_private_key_file": "$SSH_KEY_PATH"
       }
     }
   }
@@ -428,11 +431,24 @@ fi
 # Wechsle ins Terraform-Verzeichnis
 cd ../terraform
 
-# Hole die Ausgabe des Ansible-Inventory und speichere sie als JSON
-if ! terraform output -json ansible_inventory | jq > ../ansible/inventory.json; then
-  echo "Fehler beim Abrufen des Terraform-Outputs"
-  exit 1
-fi
+# Hole die benötigten Output-Werte
+SERVER_IP=$(terraform output -raw web_server_public_ip)
+SSH_KEY_PATH=$(terraform output -raw private_key_path)
+
+# Erstelle ein JSON-Inventory mit jq
+cat > ../ansible/inventory.json << EOF
+{
+  "webservers": {
+    "hosts": {
+      "web": {
+        "ansible_host": "$SERVER_IP",
+        "ansible_user": "ec2-user",
+        "ansible_ssh_private_key_file": "$SSH_KEY_PATH"
+      }
+    }
+  }
+}
+EOF
 
 echo "Ansible-Inventory wurde generiert aus Terraform-Output."
 ```
