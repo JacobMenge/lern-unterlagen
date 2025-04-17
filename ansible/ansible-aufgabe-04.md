@@ -58,6 +58,22 @@ Bevor du mit dieser Übung beginnst, stelle sicher, dass folgende Tools installi
 - Terraform (Version 0.14 oder höher)
 - Ansible (Version 2.12 oder höher)
 - AWS CLI (konfiguriert mit entsprechenden Berechtigungen)
+  > **Wichtig: IAM-Benutzer Zugriffsberechtigungen**
+  >
+  > Stelle sicher, dass dein IAM-Benutzer über die notwendigen Berechtigungen verfügt. Für diese Übung benötigst du die **AmazonEC2FullAccess** Berechtigung. 
+  >
+  > Falls diese Berechtigung bei deinem IAM-Benutzer noch nicht aktiviert ist, führe bitte folgende Schritte durch:
+  > 1. Melde dich in der AWS Management Console an
+  > 2. Navigiere zum IAM-Service (Identity and Access Management)
+  > 3. Wähle im linken Navigationsmenü "Benutzer" aus
+  > 4. Klicke auf deinen Benutzernamen
+  > 5. Gehe zum Tab "Berechtigungen"
+  > 6. Klicke auf "Berechtigungen hinzufügen"
+  > 7. Wähle "Bestehende Richtlinien direkt anfügen"
+  > 8. Suche nach "AmazonEC2FullAccess" und aktiviere diese Richtlinie
+  > 9. Bestätige mit "Berechtigungen hinzufügen"
+  >
+  > Diese Berechtigung ist erforderlich, damit du EC2-Instanzen erstellen, konfigurieren und verwalten kannst.
 - Ein SSH-Schlüsselpaar in AWS --> https://github.com/JacobMenge/lern-unterlagen/blob/main/aws-ssh-key-einrichten.md
   > **Hinweis für WSL-Nutzer**: 
   > 
