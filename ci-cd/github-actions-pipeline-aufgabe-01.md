@@ -4,6 +4,69 @@ Diese Übung führt dich Schritt für Schritt durch deine ersten Erfahrungen mit
 
 > **Hinweis:** CI/CD (Continuous Integration/Continuous Deployment) ist ein moderner Entwicklungsprozess, der Automatisierung nutzt, um Code schneller und zuverlässiger zu testen und bereitzustellen. GitHub Actions ist ein CI/CD-Tool, das direkt in GitHub integriert ist und es dir ermöglicht, automatisierte Workflows für deine Projekte zu erstellen.
 
+## 0. GitHub-Authentifizierung einrichten
+
+Bevor du mit den eigentlichen Schritten beginnst, musst du sicherstellen, dass du dich bei GitHub authentifizieren kannst. Seit August 2021 unterstützt GitHub keine Passwort-Authentifizierung mehr für Git-Operationen. Stattdessen musst du entweder SSH oder einen persönlichen Zugriffstoken (PAT) verwenden.
+
+### 0.1 SSH-Authentifizierung einrichten (empfohlen)
+
+1. **Überprüfe, ob du bereits SSH-Keys hast:**
+   ```bash
+   ls -la ~/.ssh
+   ```
+   Wenn du Dateien wie `id_rsa`, `id_ed25519` oder ähnliche siehst, hast du bereits SSH-Keys.
+
+2. **Falls keine SSH-Keys vorhanden sind, erstelle welche:**
+   ```bash
+   ssh-keygen -t ed25519 -C "deine-email@example.com"
+   ```
+   Drücke mehrmals Enter, um die Standardeinstellungen zu akzeptieren. Es werden zwei Dateien erstellt: 
+   - `~/.ssh/id_ed25519` (privater Schlüssel - halte diesen geheim!)
+   - `~/.ssh/id_ed25519.pub` (öffentlicher Schlüssel - diesen teilst du mit GitHub)
+
+3. **Kopiere den öffentlichen Schlüssel:**
+   ```bash
+   cat ~/.ssh/id_ed25519.pub
+   ```
+   Kopiere die gesamte Ausgabe.
+
+4. **Füge den Schlüssel zu deinem GitHub-Konto hinzu:**
+   - Gehe zu GitHub → Settings → SSH and GPG keys
+   - Klicke auf "New SSH key"
+   - Gib einen Titel ein (z.B. "Mein Laptop")
+   - Füge den kopierten Schlüssel in das Feld "Key" ein
+   - Klicke auf "Add SSH key"
+
+5. **Teste die Verbindung:**
+   ```bash
+   ssh -T git@github.com
+   ```
+   Du solltest eine Meldung sehen: "Hi username! You've successfully authenticated..."
+
+### 0.2 Persönlichen Zugriffstoken (PAT) erstellen (Alternative)
+
+Wenn du lieber mit HTTPS arbeiten möchtest:
+
+1. **Erstelle einen PAT auf GitHub:**
+   - Gehe zu GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Klicke auf "Generate new token"
+   - Gib einen Namen für den Token ein
+   - Wähle mindestens den Bereich "repo" aus
+   - Klicke auf "Generate token"
+   - **Wichtig:** Kopiere den erzeugten Token sofort! Er wird nur einmal angezeigt.
+
+2. **Speichere den Token für die weitere Verwendung:**
+   - Du kannst ihn in einer Passwort-Manager-App speichern
+   - Oder Git konfigurieren, den Token zu speichern:
+     ```bash
+     git config --global credential.helper store
+     ```
+     (Beachte, dass dies den Token im Klartext auf deinem Computer speichert)
+
+3. **Bei der nächsten Git-Operation:**
+   - Verwende deinen GitHub-Benutzernamen
+   - Verwende den Token als Passwort
+
 ## 1. GitHub Repository erstellen
 
 ### 1.1 Neues Repository anlegen
@@ -24,11 +87,25 @@ Besuche GitHub und erstelle ein neues Repository:
 
 ### 1.2 Repository klonen
 
-Klone das Repository auf deinen lokalen Computer:
+Klone das Repository auf deinen lokalen Computer. Je nach deiner bevorzugten Authentifizierungsmethode:
 
+**Mit SSH (empfohlen, wenn du den SSH-Schlüssel eingerichtet hast):**
 ```bash
-# Repository klonen
+# Repository mit SSH klonen
+git clone git@github.com:dein-username/github-actions-demo.git
+
+# In das Verzeichnis wechseln
+cd github-actions-demo
+```
+
+**Mit HTTPS und Personal Access Token:**
+```bash
+# Repository mit HTTPS klonen
 git clone https://github.com/dein-username/github-actions-demo.git
+# Du wirst nach Benutzername und Passwort gefragt - verwende deinen Token als Passwort
+
+# Oder direkt mit Token im URL (nicht empfohlen für öffentliche Skripts)
+git clone https://dein-username:dein-token@github.com/dein-username/github-actions-demo.git
 
 # In das Verzeichnis wechseln
 cd github-actions-demo
@@ -134,6 +211,8 @@ git push origin main
 ```
 
 Nachdem du diesen Befehl ausgeführt hast, werden deine Änderungen auf GitHub hochgeladen, und der Workflow wird automatisch gestartet.
+
+**Hinweis:** Wenn du Authentifizierungsprobleme beim Push hast, überprüfe nochmals deinen SSH-Key oder Personal Access Token.
 
 ### 3.2 Workflow-Ausführung überprüfen
 
@@ -448,6 +527,7 @@ jobs:
 ## 7. Zusammenfassung
 
 In dieser Übung hast du:
+- Die Authentifizierung mit GitHub über SSH oder Personal Access Token eingerichtet
 - Ein GitHub-Repository erstellt
 - Eine GitHub Actions Workflow-Datei erstellt und ausgeführt
 - Grundlegende Konzepte wie Jobs, Steps, Artefakte und Job-Abhängigkeiten kennengelernt
@@ -469,6 +549,8 @@ In dieser Übung hast du:
 
 Hier sind einige häufige Probleme und ihre Lösungen:
 
+- **Authentifizierungsprobleme**: Überprüfe deine SSH-Keys oder dein Personal Access Token
+- **SSH-Key wird abgelehnt**: Stelle sicher, dass der öffentliche Schlüssel in deinem GitHub-Account hinzugefügt wurde
 - **Syntax-Fehler**: Überprüfe die Einrückung und Struktur deiner YAML-Datei
 - **Workflow wird nicht ausgelöst**: Stelle sicher, dass der Trigger (`on`) korrekt konfiguriert ist
 - **Job schlägt fehl**: Überprüfe die Protokolle für Fehlerdetails
