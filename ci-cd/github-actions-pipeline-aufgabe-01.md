@@ -1,6 +1,6 @@
 # GitHub Actions "Hello World" - Deine erste CI/CD Pipeline
 
-Diese Übung führt dich Schritt für Schritt durch deine ersten Erfahrungen mit GitHub Actions. Du wirst lernen, wie du ein Repository erstellst, eine einfache Workflow-Datei anlegst und deine erste Pipeline ausführst. Solltest du während der Übung Probleme haben oder Fragen aufkommen, melde dich gerne jederzeit bei deinem Kursleiter. Wir helfen dir gerne weiter!
+Diese Übung führt dich Schritt für Schritt durch deine ersten Erfahrungen mit GitHub Actions. Du wirst lernen, wie du ein Repository erstellst, eine einfache Workflow-Datei anlegst und deine erste Pipeline ausführst.  Solltest du während der Übung Probleme haben oder Fragen aufkommen, melde dich gerne jederzeit per Slack oder im CR bei mir. Ich helfe dir gerne weiter!
 
 > **Hinweis:** CI/CD (Continuous Integration/Continuous Deployment) ist ein moderner Entwicklungsprozess, der Automatisierung nutzt, um Code schneller und zuverlässiger zu testen und bereitzustellen. GitHub Actions ist ein CI/CD-Tool, das direkt in GitHub integriert ist und es dir ermöglicht, automatisierte Workflows für deine Projekte zu erstellen.
 
