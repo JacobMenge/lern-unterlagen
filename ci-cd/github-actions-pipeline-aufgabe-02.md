@@ -8,11 +8,6 @@ In dieser Übung wirst du eine CI/CD-Pipeline für eine einfache JavaScript-Anwe
 
 Bevor du mit der Übung beginnst, stelle sicher, dass deine Entwicklungsumgebung richtig eingerichtet ist:
 
-### Für alle Nutzer
-
-1. **Git installieren** (falls nicht bereits vorhanden)
-2. **GitHub-Account** einrichten (falls nicht bereits vorhanden)
-
 ### Für Windows-Nutzer mit WSL (Windows Subsystem für Linux)
 
 Wenn du WSL verwendest, führe diese Schritte aus, um eine saubere Node.js-Umgebung einzurichten:
