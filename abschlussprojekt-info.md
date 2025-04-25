@@ -20,9 +20,9 @@ In der kommenden Projektphase entwickelt ihr eigenständig eine Web-Anwendung, d
 ## Montag
 
 - **9:00 Uhr**: Gemeinsames Treffen
-- **10:00 - 11:00 Uhr**: Scrum Meeting Team Rot
-- **11:00 - 12:00 Uhr**: Scrum Meeting Team Blau
-- **12:00 - 13:00 Uhr**: Scrum Meeting Team Grün
+- **10:15 - 11:00 Uhr**: Scrum Meeting Team Rot
+- **11:15 - 12:00 Uhr**: Scrum Meeting Team Blau
+- **12:15 - 13:00 Uhr**: Scrum Meeting Team Grün
 - **Nachmittag**: Selbständiges Arbeiten am Projekt
 
 ---
