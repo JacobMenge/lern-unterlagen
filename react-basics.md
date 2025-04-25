@@ -880,7 +880,7 @@ export default TodoList;
   padding: 20px 0;            /* Abstand oben und unten */
 }
 */
-
+````
 ## Aufbau und Funktionsweise der Todo-App
 
 Nachdem wir nun alle Komponenten erstellt haben, wollen wir verstehen, wie sie zusammenarbeiten und wie der Datenfluss funktioniert.
