@@ -5,7 +5,7 @@ In der kommenden Projektphase entwickelt ihr eigenständig eine Web-Anwendung, d
 
 ---
 
-## Zeitlicher Ablauf
+### Zeitlicher Ablauf
 
 
 ## Tägliche Struktur
