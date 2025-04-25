@@ -6,8 +6,94 @@ In der kommenden Projektphase entwickelt ihr eigenständig eine Web-Anwendung, d
 ---
 
 ## Zeitlicher Ablauf
-- **Dauer der Projektphase:** ca. 1 Monat
-- **Tägliche Anwesenheit:** 09:00 Uhr kurzes Treffen zur Anwesenheit und Verkündung wichtiger Infos (über Slack/Video-Call; Details folgen)
+
+
+## Tägliche Struktur
+
+- **9:00 Uhr**: Gemeinsames Treffen im Classroom
+  - Anwesenheitserfassung
+  - Wichtige Ankündigungen (max. 15-30 Minuten)
+  - Keine Projektbesprechungen
+
+---
+
+## Montag
+
+- **9:00 Uhr**: Gemeinsames Treffen
+- **10:00 - 11:00 Uhr**: Scrum Meeting Team Rot
+- **11:00 - 12:00 Uhr**: Scrum Meeting Team Blau
+- **12:00 - 13:00 Uhr**: Scrum Meeting Team Grün
+- **Nachmittag**: Selbständiges Arbeiten am Projekt
+
+---
+
+## Dienstag
+
+- **9:00 Uhr**: Gemeinsames Treffen
+- **10:00 - 12:30 Uhr**: Individuelle Buchungsslots für Bugfixing (je 30 Min.)
+  - Bitte nur mit Problemen kommen, die selbständig nicht gelöst werden konnten
+  - Problem und Fehlermeldungen vorab senden
+  - Maximal ein 30-Minuten-Slot pro Person
+- **Nachmittag**: Selbständiges Arbeiten am Projekt
+
+---
+
+## Mittwoch
+
+- **9:00 Uhr**: Gemeinsames Treffen
+- **10:00 - 12:30 Uhr**: Individuelle Buchungsslots für Bugfixing (je 30 Min.)
+- **Nachmittag**: Selbständiges Arbeiten am Projekt
+
+---
+
+## Donnerstag
+
+- **9:00 Uhr**: Gemeinsames Treffen
+- **10:00 - 12:30 Uhr**: Individuelle Buchungsslots für Bugfixing (je 30 Min.)
+- **Nachmittag**: Selbständiges Arbeiten am Projekt
+
+---
+
+## Freitag
+
+- **9:00 Uhr**: Gemeinsames Treffen
+- **10:00 - 11:00 Uhr**: Individuelle Buchungsslots für Bugfixing (je 30 Min.)
+- **12:00 - 13:00 Uhr**: Offene Peer-Review-Session
+  - Freiwillige Vorstellung von Projekten (ca. 10 Min. pro Person)
+  - Möglichkeit für Demos oder Präsentation interessanter Erkenntnisse
+  - Bei geringer Beteiligung stellt auch der Kursleiter etwas vor
+  - Teilnahme auf freiwilliger Basis
+- **Nachmittag**: Selbständiges Arbeiten am Projekt
+
+---
+
+### Hinweise:
+- Die Scrum Teams bestehen aus 5-8 Personen, darunter befinden sich sowohl Einzel- als auch Gruppenprojekte
+- Für Bugfixing-Termine bitte rechtzeitig über die Buchungslinks anmelden
+  - **Wichtig**: Vorab über das Problem informieren und Screenshots/wichtige Codeabschnitte senden
+  - Dies ist notwendig, um das Problem in der 30-minütigen Session effektiv lösen zu können
+- Die täglichen gemeinsamen Treffen sind verpflichtend für alle Teilnehmer
+- In der restlichen Zeit wird selbständig am Abschlussprojekt gearbeitet
+
+### Kommunikation:
+- Generelle Fragen zum Abschlussprojekt können jederzeit über Slack gestellt werden
+- Technische Probleme werden ausschließlich über die Buchungslinks behandelt, nicht über Slack
+- Nur kurze, einfach zu beantwortende Fragen dürfen über Slack gestellt werden
+
+---
+
+## Wochenkalender - Übersicht
+
+| Zeit | Montag | Dienstag | Mittwoch | Donnerstag | Freitag |
+|------|--------|----------|----------|------------|---------|
+| 9:00 | Gemeinsames Treffen | Gemeinsames Treffen | Gemeinsames Treffen | Gemeinsames Treffen | Gemeinsames Treffen |
+| 10:00 | Scrum Team Rot | Bugfixing | Bugfixing | Bugfixing | Bugfixing |
+| 10:30 | Scrum Team Rot | Bugfixing | Bugfixing | Bugfixing | Bugfixing |
+| 11:00 | Scrum Team Blau | Bugfixing | Bugfixing | Bugfixing | Selbstständiges Arbeiten |
+| 11:30 | Scrum Team Blau | Bugfixing | Bugfixing | Bugfixing | Selbstständiges Arbeiten |
+| 12:00 | Scrum Team Grün | Bugfixing | Bugfixing | Bugfixing | Peer-Review-Session |
+| 12:30 | Scrum Team Grün | Bugfixing | Bugfixing | Bugfixing | Peer-Review-Session |
+| 13:00+ | Selbstständiges Arbeiten | Selbstständiges Arbeiten | Selbstständiges Arbeiten | Selbstständiges Arbeiten | Selbstständiges Arbeiten |
 - **Verfügbarkeit:** Ihr seid von Montag bis Freitag zwischen 09:00 – 17:00 Uhr via Slack erreichbar
 
 ---
