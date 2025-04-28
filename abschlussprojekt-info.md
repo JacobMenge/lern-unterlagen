@@ -1,6 +1,4 @@
----
-
-**Viel Erfolg und gutes Gelingen!**# Projektphase – Handout und Ablaufplan
+# Projektphase – Handout und Ablaufplan
 
 ## Inhaltsverzeichnis
 1. [Projektübersicht](#projektübersicht)
