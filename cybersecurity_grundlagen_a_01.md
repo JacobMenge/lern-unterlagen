@@ -307,6 +307,7 @@ d) Durch einen infizierten USB-Stick
 **Cyberpol-Recherche:** Nutzen Sie **AbuseIPDB.com** und überprüfen Sie diese verdächtigen IPs:
 - 198.51.100.45
 - 45.142.212.98
+- 102.209.217.173
 
 **Frage 1:** Sind diese IP-Adressen bereits bei anderen Cyber-Verbrechen aufgefallen? (Ja/Nein für jede)
 
