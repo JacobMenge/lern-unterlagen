@@ -1,8 +1,7 @@
-# Cybersecurity Detektiv-Workshop: Der Fall MustermannGmbH
-## Eine spannende Einzelaufgabe für Cyber-Detektive (4-6 Stunden)
+# Cybersecurity Detektiv: Der Fall MustermannGmbH
 
 **Ihre Mission:** Sie sind Cyber-Ermittler und müssen einen mysteriösen Sicherheitsvorfall aufklären!  
-**Abgabe:** Textdokument mit Ihrem kompletten Ermittlungsbericht
+**Abgabe:** Textdokument mit Ihrem kompletten Ermittlungsbericht, bsp. seht ihr am Ende.
 
 ---
 
