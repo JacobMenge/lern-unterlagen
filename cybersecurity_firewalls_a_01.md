@@ -1,14 +1,14 @@
 # Windows Firewall - Grundlagen und praktische Übungen
 
-Heute lernt ihr, wie Windows Firewalls funktionieren und wie ihr euer System sicher analysieren könnt - ohne etwas zu riskieren! Wir schauen nur, ändern nichts, und lernen dabei eine Menge über Cybersecurity.
+Heute lernt ihr, wie Windows Firewalls funktionieren und wie ihr euer System sicher analysieren könnt - ohne etwas zu riskieren! Wir schauen nur, ändern nichts und  lernen dabei eine Menge über Cybersecurity.
 
 ## Was ihr heute lernen werdet
 
-In diesem Workshop entwickelt ihr ein fundiertes Verständnis für Windows Firewalls und deren praktische Anwendung. Ihr lernt zunächst die theoretischen Grundlagen kennen: Was ist eine Firewall überhaupt, warum braucht ihr sie, und wie funktioniert das System in Windows? Dabei erkläre ich euch das Konzept von Ports, Firewall-Regeln und den verschiedenen Sicherheitsprofilen.
+In diesem Workshop entwickelt ihr ein fundiertes Verständnis für Windows Firewalls und deren praktische Anwendung. Ihr lernt zunächst die theoretischen Grundlagen kennen: Was ist eine Firewall überhaupt, warum braucht ihr sie und  wie funktioniert das System in Windows? Dabei erkläre ich euch das Konzept von Ports, Firewall-Regeln und den verschiedenen Sicherheitsprofilen.
 
-Anschließend werdet ihr diese Theorie in die Praxis umsetzen. Ihr lernt wichtige Windows-Befehle kennen, mit denen ihr euer eigenes System analysieren könnt. Dabei findet ihr heraus, welche Programme gerade Netzwerkverbindungen nutzen, welche Ports offen sind, und wie ihr Firewall-Logs richtig interpretiert. Am Ende könnt ihr selbstständig einschätzen, ob euer System sicher konfiguriert ist.
+Anschließend werdet ihr diese Theorie in die Praxis umsetzen. Ihr lernt wichtige Windows-Befehle kennen, mit denen ihr euer eigenes System analysieren könnt. Dabei findet ihr heraus, welche Programme gerade Netzwerkverbindungen nutzen, welche Ports offen sind und  wie ihr Firewall-Logs richtig interpretiert. Am Ende könnt ihr selbstständig einschätzen, ob euer System sicher konfiguriert ist.
 
-Das Besondere: Ihr macht das alles komplett sicher, ohne euer System zu gefährden. Wir nutzen nur die Tools, die Windows bereits mitbringt, und ändern nie etwas an eurer Konfiguration. Ihr lernt durch Beobachten und Analysieren - das ist oft viel lehrreicher als blindes Konfigurieren.
+Das Besondere: Ihr macht das alles komplett sicher, ohne euer System zu gefährden. Wir nutzen nur die Tools, die Windows bereits mitbringt und  ändern nie etwas an eurer Konfiguration. Ihr lernt durch Beobachten und Analysieren - das ist oft viel lehrreicher als blindes Konfigurieren.
 
 ---
 
@@ -16,7 +16,7 @@ Das Besondere: Ihr macht das alles komplett sicher, ohne euer System zu gefährd
 
 ## Was ist eine Firewall und warum brauche ich sie?
 
-Eine Firewall ist im Grunde ein intelligenter Wächter für euren Computer. Stellt euch vor, euer Computer wäre ein Haus mit vielen verschiedenen Türen. Jede dieser Türen wird in der Computerwelt als "Port" bezeichnet, und es gibt insgesamt 65.535 solcher Türen. Eine Firewall funktioniert wie ein sehr aufmerksamer Türsteher, der bei jeder einzelnen Tür steht und genau kontrolliert, wer hinein- und herausgehen darf.
+Eine Firewall ist im Grunde ein intelligenter Wächter für euren Computer. Stellt euch vor, euer Computer wäre ein Haus mit vielen verschiedenen Türen. Jede dieser Türen wird in der Computerwelt als "Port" bezeichnet und  es gibt insgesamt 65.535 solcher Türen. Eine Firewall funktioniert wie ein sehr aufmerksamer Türsteher, der bei jeder einzelnen Tür steht und genau kontrolliert, wer hinein- und herausgehen darf.
 
 Ohne eine Firewall wären alle diese Türen unkontrolliert - jeder könnte einfach hineispazieren und sich nehmen, was er möchte. Das wäre etwa so, als würdet ihr euer Haus verlassen und alle Türen sperrangelweit offen stehen lassen. Hacker, Viren und andere schädliche Programme könnten ungehindert auf euren Computer zugreifen, eure Daten stehlen, euch ausspionieren oder euren Computer sogar für weitere Angriffe missbrauchen.
 
@@ -28,9 +28,9 @@ Die Windows Firewall überwacht dabei zwei Richtungen des Datenverkehrs:
 
 ## Wie funktioniert die Windows Firewall?
 
-Die Windows Firewall arbeitet nach einem sehr logischen System, das man sich wie eine intelligente Ampel vorstellen kann. Für jede Netzwerkverbindung entscheidet sie: Rot bedeutet stoppen und blockieren, Gelb bedeutet nachfragen und den Benutzer entscheiden lassen, und Grün bedeutet durchlassen und erlauben.
+Die Windows Firewall arbeitet nach einem sehr logischen System, das man sich wie eine intelligente Ampel vorstellen kann. Für jede Netzwerkverbindung entscheidet sie: Rot bedeutet stoppen und blockieren, Gelb bedeutet nachfragen und den Benutzer entscheiden lassen und  Grün bedeutet durchlassen und erlauben.
 
-Das Besondere an der Windows Firewall ist, dass sie nicht nur stupide Regeln befolgt, sondern intelligent mitdenkt. Sie merkt sich zum Beispiel, wenn ihr eine Webseite aufruft, und erlaubt dann automatisch die Antwort vom Webserver. Das nennt man "Stateful Inspection" - die Firewall versteht den Zusammenhang zwischen eurer Anfrage und der Antwort.
+Das Besondere an der Windows Firewall ist, dass sie nicht nur stupide Regeln befolgt, sondern intelligent mitdenkt. Sie merkt sich zum Beispiel, wenn ihr eine Webseite aufruft und  erlaubt dann automatisch die Antwort vom Webserver. Das nennt man "Stateful Inspection" - die Firewall versteht den Zusammenhang zwischen eurer Anfrage und der Antwort.
 
 **Beispiel für Stateful Inspection:**
 ```
@@ -118,7 +118,7 @@ Port 31337 = "Elite" Hacker-Port
 
 ## Firewall-Regeln verstehen
 
-Firewall-Regeln sind das Herzstück des gesamten Systems, und ihr müsst unbedingt verstehen, wie sie funktionieren. Das wichtigste Prinzip ist: **Die erste passende Regel gewinnt immer**. Windows arbeitet die Regelliste von oben nach unten ab und wendet die erste Regel an, die auf eine Verbindung passt.
+Firewall-Regeln sind das Herzstück des gesamten Systems und  ihr müsst unbedingt verstehen, wie sie funktionieren. Das wichtigste Prinzip ist: **Die erste passende Regel gewinnt immer**. Windows arbeitet die Regelliste von oben nach unten ab und wendet die erste Regel an, die auf eine Verbindung passt.
 
 **Beispiel für Regel-Reihenfolge:**
 ```
