@@ -4,7 +4,7 @@ Heute lernt ihr, wie Windows Firewalls funktionieren und wie ihr euer System sic
 
 ## Was ihr heute lernen werdet
 
-In diesem Workshop entwickelt ihr ein fundiertes Verständnis für Windows Firewalls und deren praktische Anwendung. Ihr lernt zunächst die theoretischen Grundlagen kennen: Was ist eine Firewall überhaupt, warum braucht ihr sie und  wie funktioniert das System in Windows? Dabei erkläre ich euch das Konzept von Ports, Firewall-Regeln und den verschiedenen Sicherheitsprofilen.
+In dieser Aufgbe entwickelt ihr ein fundiertes Verständnis für Windows Firewalls und deren praktische Anwendung. Ihr lernt zunächst die theoretischen Grundlagen kennen: Was ist eine Firewall überhaupt, warum braucht ihr sie und  wie funktioniert das System in Windows? Dabei erkläre ich euch das Konzept von Ports, Firewall-Regeln und den verschiedenen Sicherheitsprofilen.
 
 Anschließend werdet ihr diese Theorie in die Praxis umsetzen. Ihr lernt wichtige Windows-Befehle kennen, mit denen ihr euer eigenes System analysieren könnt. Dabei findet ihr heraus, welche Programme gerade Netzwerkverbindungen nutzen, welche Ports offen sind und  wie ihr Firewall-Logs richtig interpretiert. Am Ende könnt ihr selbstständig einschätzen, ob euer System sicher konfiguriert ist.
 
